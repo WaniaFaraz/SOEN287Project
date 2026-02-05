@@ -21,7 +21,7 @@
 
 
 ## Unfinished Tasks
-### 2. Minimum Required Features
+### Minimum Required Features
 #### Students should be able to:
 * Enter earned marks and total marks for assessments.
 
