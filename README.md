@@ -16,9 +16,12 @@
 * Create and manage courses.
 * Define assessment categories and their weightings for each course. 
 ## Info about project
-### Color scheme:
-* #
-
+### Color scheme 1:
+* (195,200,140) SAGE
+* (48,37,62) DARK PURPLE
+* (99,136,114) RUSSIAN GREEN
+* (128,185,177) PEWTER BLUE
+* (148,199,180) CAMBRIDGE BLUE
 
 ## Unfinished Tasks
 ### Minimum Required Features
