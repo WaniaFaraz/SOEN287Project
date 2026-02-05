@@ -1,4 +1,5 @@
 # SOEN287Project
+* This file can be edited without creating a new branch and submitting a pull request so that it can stay up-to-date
 ## Work Distribution
 ### Wiame
 * Mark assessments as completed or pending.
@@ -14,7 +15,8 @@
 * View upcoming assessments across all courses in a single dashboard. 
 ### Wania
 * Create and manage courses.
-* Define assessment categories and their weightings for each course. 
+* Define assessment categories and their weightings for each course.
+* Create home page
 ## Info about project
 ### Color scheme 1:
 * (195,200,140) SAGE
