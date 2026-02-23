@@ -1,0 +1,140 @@
+<!DOCTYPE HTML5>
+<html lang = "en">
+    <head>
+        <title>Smart Course Companion</title>
+        <link rel = "stylesheet" href = "Instructor_Manage_Courses_styles.css">
+        <script type = "text/javascript" src = "jspractice.js" defer></script>
+    </head>
+    <body>
+        <div class = "left">
+            <div class = "left-title sub-title" id="left-title">COURSE COMPANION</div>
+            <nav class = "left-menu-top">
+                <ul>
+                    <li class = "left-menu-option"><img src = "white-icons/white-4-square-grid-96.png"><a href = "New_HomePage.html">Dashboard</a></li>
+                    <li class = "left-menu-option"><img src = "white-icons/white-class-96.png"><a href = "New_HomePage.html">All Classes</a></li>
+                    <li class = "left-menu-option"><img src = "white-icons/white-messages-288.png"><a href = "">Messages</a></li>
+                    <li class = "left-menu-option"><img src = "white-icons/white-timetable-96.png"><a href = "">Schedule</a></li>
+                    <li class = "left-menu-option"><img src = "white-icons/white-assignments-96.png"><a href = "">Assignments</a></li>
+                </ul>
+            </nav>
+            <nav class = "left-menu-bottom">
+                <ul>
+                    <li class = "left-menu-option"><img src = "white-icons/white-sign-out-96.png"><a href = "">Log out</a></p>
+                    <li class = "left-menu-option"><img src = "white-icons/white-settings-288.png"><a href = "ManageAccount.html">Settings</a></p>
+                    <li class = "left-menu-option"><img src = "white-icons/white-help-96.png"><a href = "">Help</a></p>
+                </ul>
+            </nav>
+        </div>
+        <div class = "center">
+            <div class = "uppermost-center-line">
+                <div class = "instructor-welcome-message">
+                    <p class = "center-title">WELCOME PROFESSOR X</p>
+                    <p class = "current-course-count">YOU'RE CURRENTLY MANAGING 3 COURSES</p>
+                </div>
+                <div class = "left-icons-in-uppermost-center-line">
+                    <div class = "search-bar-container">
+                        <div ><img class = "search-icon" src = "black-icons/black-search-480.png"></div>
+                        <input type = "text" class = "search-bar-input" placeholder="Search"></input>
+                    </div>
+                    <div class = "notifications"><img class = "notifications-icon" src = "black-icons/black_notification-96.png"></div>
+                    <div class = "edit-courses-menu">
+                        <div class = "hamburger-menu-button">
+                            <span class = "hamburger-bar"></span>
+                            <span class = "hamburger-bar"></span>
+                            <span class = "hamburger-bar"></span>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            <div class = "manage-courses-area" >
+                <form class = manage-courses-form>
+                    <div class = "manage-courses-title">ADD COURSE</div>
+                    <div class = "course-title">
+                        <label for = "course-title" class = "text-input-label">Course title</label>
+                        <input type = "text" class = "course-title form-text-input" id = "course-title"></input>
+                    </div>
+                    <div class = "course-section">
+                        <label for = "course-section" class = "text-input-label">Course section</label>
+                        <input type = "text" class = "course-section form-text-input" id = "course-section"/>
+                    </div>
+                    <div class = "class-capacity">
+                        <label for = "course-capacity" class = "text-input-label">Course capacity</label>
+                        <input type = "text" class = "course-title form-text-input" id="course-capacity"/>
+                    </div>
+                    <div class = "course-semester" >
+                        <label for = "semester-dropdown" class = "semester-dropdown-label">Semester</label>
+                        <select class = "semester-dropdown" id = "semester-dropdown">
+                            <option class = "semester-option"></option>
+                            <option class = "semester-option">Fall 2026</option>
+                            <option class = "semester-option">Winter 2027</option>
+                            <option class = "semester-option">Summer 2027</option>
+                            <option class = "semester-option">Fall 2027</option>
+                        </select>
+                    </div>
+                    <div class = "dates-form">
+                        <div class = "course-start-date course-date">
+                            <label class = "course-start-date-label course-date-label" for = "course-start-date">Start date</label>
+                            <input type = "date" class = "course-start-date course-dates" id = "course-start-date"/>
+                        </div>
+                        <div class = "course-end-date course-date">
+                            <label class = "course-end-date-label course-date-label" for = "course-end-date">End date</label>
+                            <input type = "date" class = "course-end-date course-dates" id = "course-end-date"/>
+                        </div>
+                    </div>
+                    <div class = "select-course-background" >
+                        <div>Course background</div>
+                        <div class = "course-backgrounds-area">
+                            <div class = "course-background-container"><button class = "course-background-option course-bg-1"></button></div>
+                            <div class = "course-background-container"><button class = "course-background-option course-bg-2"></button></div>
+                            <div class = "course-background-container"><button class = "course-background-option course-bg-3"></button></div>
+                            <div class = "course-background-container"><button class = "course-background-option course-bg-4"></button></div>
+                        </div>
+                    </div>
+                    <div class = "add-course-submit-container">
+                        <button type = "submit" class = "add-course-submit">Add Course</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class = "right">
+            <div class = "top-right">
+                <div class = "text-next-to-profile">
+                    <p class = "username" id = "username">Username</p>
+                    <p class = "student-id">Student ID</p>
+                </div>
+                <div><img class = "profile-photo" src = "white-icons/white-profile-96.png"></div>
+            </div>
+            <div class = "class-performance-container">
+                <p>CLASS PERFORMANCE</p>
+                <div class = "class-performance-bar-chart-div">
+                    <ul class = "class-performance-bar-chart-ul">
+                        <li class = "li-bar bar-1">
+                            <span class = "bar-label">COMP 248</span>
+                        </li>
+                        <li class = "li-bar bar-2">
+                            <span class = "bar-label">COMP249</span>
+                        </li>
+                        <li class = "li-bar bar-3">
+                            <span class = "bar-label">SOEN287</span>
+                        </li>
+                        <li class = "li-bar bar-4">
+                            <span class = "bar-label">COMP348</span>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class = "calendar-home">
+                <div class = "month">February 2026</div>
+                <p class = "day">1</p><p class = "day">2</p><p class = "day">3</p><p class = "day">4</p><p class = "day">5</p>
+                <p class = "day">6</p><p class = "day">7</p><p class = "day">8</p><p class = "day">9</p><p class = "day">10</p>
+                <p class = "day">11</p><p class = "day">12</p><p class = "day">13</p><p class = "day">14</p><p class = "day">15</p>
+                <p class = "day">16</p><p class = "day">17</p><p class = "day">18</p><p class = "day">19</p><p class = "day">20</p>
+                <p class = "day">21</p><p class = "day">22</p><p class = "day">23</p><p class = "day">24</p><p class = "day">25</p>
+                <p class = "day">26</p><p class = "day">27</p><p class = "day">28</p>
+            </div>
+            
+           
+        </div>
+    </body>
+</html>
