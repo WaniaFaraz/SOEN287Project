@@ -135,8 +135,12 @@ a {
 .center-title {
     /*My courses*/
     font-family : oswald;
+    
+    font-size : 20pt;
+}
+
+.instructor-welcome-message {
     flex-grow : 1;
-    font-size : 30pt;
 }
 
 .left-icons-in-uppermost-center-line {
@@ -211,242 +215,149 @@ a {
     margin-top : 5px;
 }
 
-.filter-by-line {
+
+.manage-assessments-title {
+    margin-bottom : 0.3cm;
+    font-size : 18pt;
     display : flex;
-    padding-top : 1cm;
-    padding-right : 0.5cm;
-    padding-left : 0.5cm;
-    gap : 5%;
-    font-size : 14pt;
-    align-items : center;
-    margin-bottom : 1cm;
+    align-items: center;
+}
+
+.manage-assessments-area {
+    border-radius : 15px;
+    background-color: rgb(225, 222, 230);
+    margin-top: 0.2cm;
+    margin-left : 0.2cm;
+    margin-right : 0.2cm;
+    padding : 1.2cm 12%;
+
+}
+
+.manage-assessments-form {
+    display : block;
+    justify-self: center;
+    width : 80%;
+}
+
+.manage-assessments-form div {
+    margin-bottom : 15px;
+
+}
+
+
+.textarea-input-label {
+    display : block;
+    margin-bottom: 0.2cm;
+}
+.weight-input-label {
+    padding-right : 0.4cm;
+    text-align: right;
+    width : 3cm;
+    flex-grow : 1;
+    justify-content: flex-end;
+}
+
+.title-weight-container {
+    display : flex;
+    gap : 0.6cm;
+    width : 100%;
+
+}
+
+.form-text-input:focus {
+    outline : none;
+}
+.form-text-input {
+    background-color: whitesmoke;
+    border-radius : 5px;
+    border : none;
+    height : 0.8cm;
+    width : 5cm;
+    padding-left : 0.2cm;
+    padding-right : 0.2cm;
+}
+
+
+
+.assessment-description {
+    height : 2in;
+    width : 100%;
+    padding-top : 0.2cm;
+    padding-bottom : 0.2cm;
+}
+
+.course-dropdown-dates-container {
+    display : flex;
+    gap : 1cm;
+    width : 100%;
+}
+.course-dropdown {
+    border : none;
+    border-radius : 5px;
+    height : 0.8cm;
+    padding-left : 0.2cm;
+    padding-right : 0.2cm;
+
+    width : 5cm;
+    background-color : whitesmoke;
+}
+
+.course-dropdown-div {
+    display: block;
+    margin-top : 1cm;
+    flex-grow: 1;
+}
+
+.course-dropdown-label {
+    display: block;
+    margin-bottom: 0.2cm;
+}
+
+.dates-form {
+    display : flex;
+    gap : 2cm;
+    margin-top : 1cm;
+}
+
+.assessment-date-label {
+    display : block;
+}
+
+.assessment-date {
+    display : block;
+}
+
+
+.assessment-dates {
+    display : block;
+    height : 0.8cm;
+    outline : none;
+    border-radius : 5px;
+    border : none;
+    padding-left : 0.2cm;
+    padding-right : 0.2cm;
+    margin-top: 0.2cm;
+    background-color: whitesmoke;
+}
+
+
+.create-assessments-submit-container {
+    display : flex;
+    justify-content: flex-end;
+}
+.create-assessments-submit {
+    font-size: 12pt;
+    border : none;
+    border-radius: 5px;
+    height : 1cm;
+    width : 1.8in;
+    padding-left: 0.2cm;
+    padding-right: 0.2cm;
+    justify-self: right;
 }
 
 .disappear {
     display : none;
-}
-
-
-.present-div, .future-div, .past-div {
-    display : flex;
-    align-items : center;
-    border-radius : 50px;
-    background-color : grey;
-    display : flex;
-    height : 0.9cm;
-    box-shadow : 5px 5px 10px 0px var(--w-purple-grey);
-}
-
-.filter-p {
-    align-self: center;
-}
-
-
-.filter-checkbox-label {
-    display : flex;
-    border-radius : 50px;
-    padding : 0.05cm 1cm;
-    height : 100%;
-    background-color: var(--w-yellow);
-    
-}
-
-.filter-checkbox-div {
-    background-color : white;
-    display : flex;
-    justify-content : center;
-}
-
-.filter-checkbox:checked ~ .filter-checkbox-label {
-    background-color : var(--w-orange);
-}
-
-.course-area {
-    border-radius : 15px;
-    background-color: rgb(225, 222, 230);
-    /* rgb(204, 201, 210) */
-    margin-left : 0.2cm;
-    margin-right : 0.2cm;
-    padding : 1.2cm 12%;
-    display : grid;
-    grid-template-columns : 1fr 1fr;
-    grid-template-rows : auto;
-    grid-auto-flow : row;
-    justify-items : center;
-    align-items : center;
-    row-gap : 1cm;
-    overflow : auto;
-
-}
-
-.course-info-text {
-    margin-top : 0.2cm;
-    margin-bottom : 4%;
-    margin-left: 0.2cm;
-    margin-right: 0.2cm;
-    border : 0px solid black;
-    color : grey;
-}
-
-.course-info-text:hover {
-    color : var(--w-orange);
-}
-
-.course-info-text:hover:hover > .course-name {
-    color : var(--w-orange);
-}
-.course {
-    display : flex;
-    flex-direction : column;
-    background-color: whitesmoke;
-    justify-content : flex-end;
-    border-radius : 15px;
-    height : 2in;
-    width : 2.5in;
-    padding : 0.2cm 0cm;
-    overflow : none;
-
-}
-
-.course-image {
-    border : black solid  0px;
-    display : flex;
-    min-height : 0;
-    flex-grow : 1;
-    margin-right : 0.2cm;
-    margin-left : 0.2cm;
-    border-top-left-radius : 15px;
-    border-top-right-radius : 15px;
-    background-size : cover;
-
-}
-
-.course-img-1 {
-    background-image: url('course-images/IMG-20260215-WA0005.jpg');
-}
-
-.course-img-2 {
-    background-image : url('course-images/IMG-20260215-WA0006.jpg');
-}
-
-.course-img-3 {
-    background-image: url('course-images/IMG-20260215-WA0007.jpg');
-}
-
-.course-img-4 {
-    background-image: url('course-images/IMG-20260215-WA0008.jpg');
-}
-
-.course-img-5 {
-    background-image: url('course-images/IMG-20260215-WA0009.jpg');
-}
-
-.course-img-6 {
-    background-image: url('course-images/IMG-20260215-WA0010.jpg');
-}
-
-.course-img-7 {
-    background-image: url('course-images/IMG-20260215-WA0011.jpg');
-}
-
-.course-img-8 {
-    background-image: url('course-images/IMG-20260215-WA0012.jpg');
-}
-
-.course-img-9 {
-    background-image: url('course-images/IMG-20260215-WA0013.jpg');
-}
-
-.course-img-10 {
-    background-image: url('course-images/IMG-20260215-WA0014.jpg');
-}
-
-.course-img-11 {
-    background-image: url('course-images/IMG-20260215-WA0015.jpg');
-}
-
-.course-img-12 {
-    background-image: url('course-images/IMG-20260215-WA0016.jpg');
-}
-
-.course-img-13 {
-    background-image: url('course-images/IMG-20260215-WA0017.jpg');
-}
-
-.course-img-14 {
-    background-image: url('course-images/IMG-20260215-WA0018.jpg');
-}
-
-.course-img-15 {
-    background-image: url('course-images/IMG-20260215-WA0019.jpg');
-}
-
-.course-img-16 {
-    background-image: url('course-images/IMG-20260215-WA0020.jpg');
-}
-
-.course-img-17 {
-    background-image: url('course-images/IMG-20260215-WA0021.jpg');
-}
-
-.course-img-18 {
-    background-image: url('course-images/IMG-20260215-WA0022.jpg');
-}
-
-.course-img-19 {
-    background-image: url('course-images/IMG-20260215-WA0023.jpg');
-}
-
-.course-img-20 {
-    background-image: url('course-images/IMG-20260215-WA0024.jpg');
-}
-
-.course-img-21 {
-    background-image: url('course-images/IMG-20260215-WA0025.jpg');
-}
-
-.course-name {
-    font-size : 18pt;
-    color : black;
-}
-.course-code {
-    font-size : 14pt;
-}
-
-.course-section {
-    font-size : 14pt;
-}
-
-.deadline-title {
-    font-size : 18pt;
-    margin-left : 0.5cm;
-    margin-bottom : 0.5cm;
-    margin-top : 0.5cm;
-    
-}
-
-.deadlines-container {
-    border-radius: 15px;
-    background-color : rgb(225, 222, 230);
-    margin : 0.2cm;
-    padding : 0.2cm 12%;
-}
-
-.deadlines-list {
-    display : flex;
-    gap : 5%;
-    margin-left : 0.5cm;
-}
-
-.deadline-item {
-    border-radius : 20px;
-    background-color: var(--w-yellow);
-    padding : 0.2cm 0.7cm;
-    margin-bottom : 0.5cm;
-}
-
-.deadline-item:has(.deadline-item-anchor:hover)  {
-    background-color: var(--w-orange);
 }
 
 .right {
@@ -492,7 +403,7 @@ a {
     border : 1px solid var(--w-purple-grey);
     border-radius : 15px;
     margin : 0.2cm 0.3cm;
-    margin-top : 1cm;
+    margin-top : 2cm;
     padding-left : 0.4cm;
     padding-top : 0.4cm;
     padding-bottom : 0.4cm;
@@ -511,91 +422,55 @@ a {
     grid-auto-rows: 1cm;
     grid-template-areas :
     "month month month month month month month";
-
 }
 
+/*Bar chart*/
 
-#day-27 {
-    background-color: var(--w-magenta);
-    border-radius: 100%;
-    padding : 0.1cm;
+.class-performance-bar-chart-ul {
+    display : flex;
+    gap : 1.4cm;
+    border : solid 1px var(--w-purple-grey);
+    height : 5cm;
+    border-radius : 15px;
+    margin : 0.2cm 0.2cm;
+    align-items: flex-end;
+    padding-left : 0.5cm;
+    position : relative;
 }
-/*Averages*/
-.averages-container {
-    font-family: 'Arial', cursive;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left : 0.2cm;
-    margin-right : 0.2cm;
+
+.class-performance-container p {
+    padding-left : 0.5cm;
     margin-top : 1cm;
-   
-}
-.card {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    width: 350px;
-    box-shadow: 4px 4px 0px #1a1a1a;
-
 }
 
-.averages-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #470047;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    text-align: center;
+.li-bar {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    width : 1cm;
+    background-color : var(--w-yellow);
+    display : flex;
+    justify-self : center;
+    
 }
 
-.courseRow {
-    margin-bottom: 16px;
+.bar-label {
+    gap : 0.2cm;
+    position : absolute;
+    bottom : -30px;
+    margin-right : 0.2cm;
+}
+.bar-1 {
+    height : 75%;
 }
 
-.courseLabel {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #470047;
-    text-transform: uppercase;
-    margin-bottom: 6px;
+.bar-2 {
+    height : 60%;
 }
 
-.barBackground {
-    background-color: #e0e0e0;
-    border-radius: 20px;
-    height: 16px;
-    width: 100%;
+.bar-3 {
+    height : 90%;
 }
 
-.barFill {
-    height: 16px;
-    border-radius: 20px;
-    background-color: #5b2d8e;
-    transition: width 0.5s ease;
-    min-width: 5%;
-}
-
-.divider {
-    border: none;
-    border-top: 2px solid #e0e0e0;
-    margin: 20px 0;
-}
-
-.overall {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #470047;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.overallNumber {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #5b2d8e;
+.bar-4 {
+    height : 55%;
 }
