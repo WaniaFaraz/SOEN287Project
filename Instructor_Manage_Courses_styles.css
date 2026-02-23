@@ -396,19 +396,23 @@ a {
 /*calendar*/
 .calendar-home {
     /*general container look*/
-    border : 1px solid var(--w-purple-grey);
     border-radius : 15px;
     margin : 0.2cm 0.3cm;
     margin-top : 2cm;
     padding-left : 0.4cm;
     padding-top : 0.4cm;
     padding-bottom : 0.4cm;
+    background-color : var(--w-mid-purple);
+    color : whitesmoke;
 }
 
 .month {
     grid-area : month;
     justify-self : center;
     margin-bottom : 0.2cm;
+    text-align: center;
+    border-bottom: whitesmoke 1px solid;
+    width: 75%;
 }
 
 .calendar-home {

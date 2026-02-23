@@ -82,11 +82,17 @@ a {
 
 }
 
+
 .left-menu-top li {
     color : whitesmoke;
     display: flex;
     align-items : center;
 }
+
+.all-classes-box {
+    flex-direction : column;
+}
+
 
 .left-menu-bottom li {
     color : whitesmoke;
@@ -489,19 +495,23 @@ a {
 /*calendar*/
 .calendar-home {
     /*general container look*/
-    border : 1px solid var(--w-purple-grey);
     border-radius : 15px;
-    margin : 0.2cm 0.3cm;
+    margin : 0.2cm 0.5cm;
     margin-top : 1cm;
     padding-left : 0.4cm;
     padding-top : 0.4cm;
     padding-bottom : 0.4cm;
+    background-color : var(--w-mid-purple);
+    color : whitesmoke;
 }
 
 .month {
     grid-area : month;
     justify-self : center;
+    text-align: center;
     margin-bottom : 0.2cm;
+    border-bottom: whitesmoke 1px solid;
+    width: 75%;
 }
 
 .calendar-home {
@@ -511,6 +521,7 @@ a {
     grid-auto-rows: 1cm;
     grid-template-areas :
     "month month month month month month month";
+
 
 }
 
