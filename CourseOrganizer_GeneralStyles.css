@@ -9,12 +9,6 @@
 }
 
 :root {
-    --z-dark-purple : #3d0066;
-    --z-mid-purple : #82383b;
-    --z-light-purple : #EFD9F7;
-    --z-yellow : #d7ac28;
-    --z-ochre : #c78d17;
-
     --w-dark-purple1 : #470047;
     --w-dark-purple2 : #310047;
     --w-mid-purple : #6f0b5b;
@@ -23,6 +17,15 @@
     --w-orange : #ff8f2f;
     --w-dark-orange : #f97134;
     --w-purple-grey : rgb(225, 222, 230);
+
+    --bg: whitesmoke;
+    --text: #111;
+    --muted: grey;
+    --card: whitesmoke;
+
+    --radius: 15px;
+    --shadow: 5px 5px 10px 0px va(--w-purple-grey);
+    --pill: 50px; 
 }
 
 /* left menu */
