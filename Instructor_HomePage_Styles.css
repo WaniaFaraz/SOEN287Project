@@ -52,30 +52,37 @@ a {
 
 .sub-main {
     display : flex;
-    flex-grow : 1;
+    height : 80vh;
+    overflow : clip;
+
 }
 
 .sub-main-left {
     flex-grow: 1;
+    overflow-y : auto;
 }
 .center-top {
     display: flex;
     flex-grow : 1;
+    height : 1.5in;
+    margin-top: 0.4cm;
 }
 
 .uppermost-center-line {
+    /* top bar excluding profile pic and username*/
     display : flex;
     height : 1in;
     flex-grow: 1;
     padding-left : 0.5cm;
     align-items : center;
+    
 }
 
 .center-title {
-    /*My courses*/
+    /*Welcome Professor X*/
     font-family : oswald;
     flex-grow: 1;
-    font-size : 20pt;
+    font-size : 30pt;
 }
 
 .instructor-welcome-message {
@@ -158,7 +165,6 @@ a {
     display : flex;
     justify-content : flex-end;
     align-items : center;
-    border : solid red 0px;
     height : 2cm;
     padding-right : 0.5cm;
     padding-top : 0.5cm;
@@ -444,59 +450,88 @@ a {
 .sub-main-right {
     display : block;
     width : 20%;
-    background: #310047;
-    background: linear-gradient(301deg, rgba(49, 0, 71, 1) 0%, rgba(49, 0, 71, 1) 13%, rgba(49, 0, 71, 1) 25%, rgba(50, 0, 71, 1) 35%, rgba(71, 0, 71, 1) 80%);
     color : #111;
     border-radius: 15px;
+    height : fit-content;
 }
 
-/*Bar chart*/
-
-.class-performance-bar-chart-ul {
-    display : flex;
-    gap : 1.4cm;
-    border : solid 1px var(--w-purple-grey);
-    height : 5cm;
-    border-radius : 15px;
-    margin : 0.2cm 0.2cm;
-    align-items: flex-end;
-    padding-left : 0.5cm;
-    position : relative;
+/*Course performance*/
+.class-performance-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.4cm;
+   
 }
+.performance-card {
+    background: var(--w-purple-grey);
+    border-radius: 15px;
+    padding: 30px;
+    width: 350px;
 
-.class-performance-container p {
-    padding-left : 0.5cm;
-    margin-top : 1cm;
 }
 
-.li-bar {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    width : 1cm;
-    background-color : var(--w-yellow);
-    display : flex;
-    justify-self : center;
-    
+.class-performance-title {
+    font-size: 14pt;
+    color: #111;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.bar-label {
-    gap : 0.2cm;
-    position : absolute;
-    bottom : -30px;
-    margin-right : 0.2cm;
-}
-.bar-1 {
-    height : 75%;
+.courseRow {
+    margin-bottom: 16px;
 }
 
-.bar-2 {
-    height : 60%;
+.courseLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12pt;
+    color: #111;
+    text-transform: uppercase;
+    margin-bottom: 6px;
 }
 
-.bar-3 {
-    height : 90%;
+.barBackground {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    height: 16px;
+    width: 100%;
 }
 
-.bar-4 {
-    height : 55%;
+.barFill {
+    height: 16px;
+    border-radius: 20px;
+    background-color: var(--w-yellow);
+    transition: width 0.5s ease;
+    min-width: 5%;
 }
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--w-dark-purple1);
+    margin: 20px 0;
+}
+
+.overall {
+    text-align: center;
+    font-size: 14pt;
+    color: #111;
+    letter-spacing: 1px;
+}
+
+.overallNumber {
+    font-size: 14pt;
+    color: #111;
+}
+
+/*Calendar*/
+.cal-card{
+  background: var(--w-purple-grey);
+  border-radius: var(--radius);
+  padding: 0.5cm 0.6cm;
+  margin: 0;
+  border: 0;
+  height : 3in;
+}
+
