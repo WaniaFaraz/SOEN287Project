@@ -24,7 +24,7 @@ body { margin: 0;
        font-family: 'Raleway', 'Gill Sans MT', Geneva, 'Inter', 'Segoe UI', sans-serif; 
        background: var(--bg);
        color: var(--text);
-       overtflow: auto;
+       overflow: auto;
      }
 
 a {
@@ -52,7 +52,7 @@ button {
     gap: 18px;
 
 
-   background: linear-gradient(132deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%, rgba(71,0,71,1)80%)
+   background: linear-gradient(132deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%, rgba(71,0,71,1)80%);
    box-shadow: 2cm 0 2cm 0 -6 rgb(20, 20, 20);
 }
 

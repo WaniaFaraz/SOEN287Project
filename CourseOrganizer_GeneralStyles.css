@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin : 0;
+    padding : 0;
+    font-family : 'Raleway', 'Gill Sans MT',  Geneva, 'Inter',  'Lucida Sans Unicode', 'Segoe UI';
+}
+
+:root {
+    --z-dark-purple : #3d0066;
+    --z-mid-purple : #82383b;
+    --z-light-purple : #EFD9F7;
+    --z-yellow : #d7ac28;
+    --z-ochre : #c78d17;
+
+    --w-dark-purple1 : #470047;
+    --w-dark-purple2 : #310047;
+    --w-mid-purple : #6f0b5b;
+    --w-magenta : #a02b68;
+    --w-yellow : #ffb948;
+    --w-orange : #ff8f2f;
+    --w-dark-orange : #f97134;
+    --w-purple-grey : rgb(225, 222, 230);
+}
+
+/* left menu */
+.left {
+    color : whitesmoke;
+    width : 15%;
+    display : flex;
+    flex-direction : column;
+    background: #310047;
+    background: linear-gradient(132deg, rgba(49, 0, 71, 1) 0%, rgba(49, 0, 71, 1) 13%, rgba(49, 0, 71, 1) 25%, rgba(50, 0, 71, 1) 35%, rgba(71, 0, 71, 1) 80%);
+    box-shadow : 2cm 0 2cm 0 -6 rgb(20, 20, 20);
+
+}
+
+.left-title {
+    font-size : 16pt;
+    margin-top : 1cm;
+    margin-bottom : 2.5cm;
+    margin-left : 0.4cm;
+}
+
+.left-menu-option a {
+    width : 100%;
+}
+
+.left-menu-option:has(a:hover) {
+    background-color: var(--w-dark-purple1);
+    border-right : solid var(--w-magenta) 5px;
+}
+
+.left-menu-option:has(a:focus) {
+    background-color: var(--w-dark-purple1);
+    border-right : solid var(--w-magenta) 5px;
+}
+
+.left-menu-top {
+    display : flex;
+    flex-direction : column;
+    justify-content: flex-center;
+    flex-grow : 1;
+
+}
+
+.left-menu-top li {
+    color : whitesmoke;
+    display: flex;
+    align-items : center;
+}
+
+.left-menu-bottom li {
+    color : whitesmoke;
+    display : flex;
+    align-items : center;
+}
+
+.left-menu-bottom {
+    display : flex;
+    flex-direction : column;
+    justify-content : flex-end;
+}
+.left-menu-option {
+    padding-bottom : 0.25cm;
+    padding-top : 0.25cm;
+    font-size : 16pt;
+    color : grey;
+    padding-left : 0.4cm;
+}
+
+.left-menu-option img {
+    height: 30px;
+    width : 30px;
+    margin-right : 0.2cm;
+}
