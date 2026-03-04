@@ -64,12 +64,6 @@ button {
     margin-left: 0.2cm;
 }
 
-.logo-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.25);
-}
 
 .brand-title {
     font-size: 16pt;
