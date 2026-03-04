@@ -28,6 +28,10 @@
     --pill: 50px; 
 }
 
+/* scrollbar */
+.sub-main {
+    scrollbar-color : var(--w-purple-grey) whitesmoke;
+}
 /* left menu */
 .left {
     color : whitesmoke;

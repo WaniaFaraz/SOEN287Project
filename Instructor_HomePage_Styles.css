@@ -403,16 +403,15 @@ a {
     background-color : whitesmoke;
 }
 .course-name {
-    font-size : 18pt;
-    color : black;
-    flex-grow: 1;
+    font-size : 12pt;
 }
 .course-code {
     font-size : 14pt;
+    color : black;
 }
 
 .course-section {
-    font-size : 14pt;
+    font-size : 12pt;
 }
 
 .recent-activity-title {
@@ -453,6 +452,7 @@ a {
     color : #111;
     border-radius: 15px;
     height : fit-content;
+    margin-right : 0.4cm;
 }
 
 /*Course performance*/
@@ -515,7 +515,7 @@ a {
 
 .overall {
     text-align: center;
-    font-size: 14pt;
+    font-size: 12pt;
     color: #111;
     letter-spacing: 1px;
 }
