@@ -3,6 +3,7 @@
     <head>
         <title>Smart Course Companion</title>
         <link rel = "stylesheet" href = "HomePage_Styles.css">
+        <link rel = "stylesheet" href = "CourseOrganizer_GeneralStyles.css">
         <script type = "text/javascript" src = "jspractice.js" defer></script>
     </head>
     <body>
@@ -111,15 +112,33 @@
                 </div>
                 <div><img class = "profile-photo" src = "white-icons/white-profile-96.png"></div>
             </div>
-            <div class = "calendar-home">
-                <div class = "month">February 2026</div>
-                <p class = "day">1</p><p class = "day">2</p><p class = "day">3</p><p class = "day">4</p><p class = "day">5</p>
-                <p class = "day">6</p><p class = "day">7</p><p class = "day">8</p><p class = "day">9</p><p class = "day">10</p>
-                <p class = "day">11</p><p class = "day">12</p><p class = "day">13</p><p class = "day">14</p><p class = "day">15</p>
-                <p class = "day">16</p><p class = "day">17</p><p class = "day">18</p><p class = "day">19</p><p class = "day">20</p>
-                <p class = "day">21</p><p class = "day">22</p><p class = "day">23</p><p class = "day">24</p><p class = "day">25</p>
-                <p class = "day">26</p><p class = "day"><span id = "day-27">27</span></p><p class = "day">28</p>
-            </div>
+             <section class="card">
+                            <div class="card-header">
+                                <h3> Calendar </h3>
+                                <p class="muted"> FEB 2026</p>
+                            </div>
+
+                            <div class="calendar">
+                                <div class="cal-head">
+                                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                                </div>
+                                <div class="cal-grid">
+
+                                    <span class="cal-day dim"> </span>
+                                    <span class="cal-day">1</span><span class="cal-day">2</span><span class="cal-day">3</span><span class="cal-day">4</span><span class="cal-day">5</span><span class="cal-day">6</span>
+                                    <span class="cal-day">7</span><span class="cal-day">8</span><span class="cal-day">9</span><span class="cal-day">10</span><span class="cal-day">11</span><span class="cal-day">12</span>
+                                    <span class="cal-day">13</span><span class="cal-day">14</span><span class="cal-day">15</span><span class="cal-day">16</span><span class="cal-day">17</span><span class="cal-day">18</span>
+                                    <span class="cal-day">19</span><span class="cal-day">20</span><span class="cal-day">21</span><span class="cal-day">22</span><span class="cal-day">23</span><span class="cal-day">24</span>
+                                    <span class="cal-day">25</span><span class="cal-day">26</span><span class="cal-day">27</span><span class="cal-day">28</span>
+                                </div>
+
+                                <div class="cal-legend">
+                                    <span class="dot"></span>
+                                    <span class="muted">Highlighed = due dates</span>
+                                </div>
+                            </div>
+                        </section>
+
             <div class = "averages-container">
                 <div class="card">
                     <div class="averages-title">Average</div>

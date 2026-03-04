@@ -493,45 +493,7 @@ a {
 .text-next-to-profile {
     margin-right : 0.5cm;
 }
-/*calendar*/
-.calendar-home {
-    /*general container look*/
-    border-radius : 15px;
-    margin-bottom : 0.2cm;
-    margin-top : 1cm;
-    padding-left : 0.4cm;
-    padding-top : 0.4cm;
-    padding-bottom : 0.4cm;
-    background-color : var(--w-purple-grey);
-    color : #111;
-}
 
-.month {
-    grid-area : month;
-    justify-self : center;
-    text-align: center;
-    margin-bottom : 0.2cm;
-    border-bottom: #111 1px solid;
-    width: 75%;
-}
-
-.calendar-home {
-    /*grid stuff*/
-    display : grid;
-    grid-template-columns: [line-1]1fr [line-2]1fr [line-3]1fr [line-4]1fr [line-5]1fr [line-6]1fr [line-7]1fr [line-8];
-    grid-auto-rows: 1cm;
-    grid-template-areas :
-    "month month month month month month month";
-
-
-}
-
-
-#day-27 {
-    background-color: var(--w-yellow);
-    border-radius: 100%;
-    padding : 0.1cm;
-}
 /*Averages*/
 .averages-container {
     display: flex;
