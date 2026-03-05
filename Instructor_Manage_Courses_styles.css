@@ -1,4 +1,49 @@
+/* Table of current classes */
+.sub-main-left {
+    margin-left : 0.4cm;
+    margin-right: 0.4cm;
+}
 
+.table-title {
+
+    font-weight: bold;
+    font-size: 11pt;
+    margin-bottom: 0.3cm;
+    letter-spacing: 0.5px;
+}
+
+.current-courses-table {
+    background-color: whitesmoke;
+    border-radius: 15px;
+    padding : 0.4cm 0.5cm;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11pt;
+
+
+}
+
+th {
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 8px;
+    font-size: 12pt;
+    color: #666;
+}
+
+td {
+    padding: 7px 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.current-courses-area {
+    background-color: var(--w-purple-grey);
+    border-radius: 15px;
+    margin-bottom: 0.4cm;
+    padding: 0.4cm 0.5cm;
+}
 
 .manage-courses-title {
     margin-bottom : 0.3cm;
@@ -10,8 +55,6 @@
 .manage-courses-area {
     border-radius : 15px;
     background-color: rgb(225, 222, 230);
-    margin-left : 0.2cm;
-    margin-right : 0.2cm;
     padding : 1.2cm 12%;
 
 }
