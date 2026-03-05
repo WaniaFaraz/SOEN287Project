@@ -259,8 +259,9 @@
 
 .averages-title,
 .class-performance-title {
-    font-size: 14px;
+
+    font-family: 'Oswald', sans-serif;
+    font-size: 18pt;
+    font-weight: 600;
     color: whitesmoke;
-    text-align: center;
-    font-weight: 800;
 }
