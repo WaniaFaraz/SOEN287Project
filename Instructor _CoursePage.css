@@ -113,29 +113,39 @@ a {
 }
 
 /* elements in the center area */
-.center {
+.main {
     background-color: whitesmoke;
-    width : 60%;
     flex-grow : 1;
     display : block;
-    max-width : 60%;
     height : auto;
     overflow : auto;
 }
 
+.sub-main {
+    display : flex;
+    overflow : clip;
+
+}
+.center-top {
+    display: flex;
+    flex-grow : 1;
+    height : 1.2in;
+    margin-top: 0.4cm;
+}
 .uppermost-center-line {
     display : flex;
     height : 1in;
     padding-right : 1cm;
     padding-left : 0.5cm;
     align-items : center;
+    flex-grow : 1;
 }
 
 .center-title {
     /*My courses*/
     font-family : oswald;
-    
-    font-size : 20pt;
+    flex-grow: 1;
+    font-size : 30pt;
 }
 
 .instructor-welcome-message {
@@ -214,24 +224,39 @@ a {
     margin-top : 5px;
 }
 
+.top-right {
+    display : flex;
+    justify-content : flex-end;
+    align-items : center;
+    height : 2cm;
+    padding-right : 0.5cm;
+    padding-top : 0.5cm;
+    color : #111;
+    width: 23%;
+}
+
 
 
 .disappear {
     display : none;
 }
+.sub-main-left {
+    flex-grow: 1;
+    overflow-y : auto;
+}
 
-
-.right {
-    display : block;
-    width : 25%;
-    background: #310047;
-    background: linear-gradient(301deg, rgba(49, 0, 71, 1) 0%, rgba(49, 0, 71, 1) 13%, rgba(49, 0, 71, 1) 25%, rgba(50, 0, 71, 1) 35%, rgba(71, 0, 71, 1) 80%);
-    color : whitesmoke;
+.sub-main-right {
+    display : flex;
+    flex-direction: column;
+    width : 23%;
+    color : #111;
+    border-radius: 15px;
+    margin-right : 0.4cm;
 }
 
 .container {
     background-color: var(--w-purple-grey);
-    margin: 0.2cm;
+    margin: 0 0.4cm 0 0.4cm;
     padding: 0.5cm;
     border-radius: 15px;
     display: flex;
@@ -385,23 +410,13 @@ a {
     border-color: var(--w-dark-purple2);
 }
 
-.top-right {
-    display : flex;
-    justify-content : flex-end;
-    align-items : center;
-    border : solid red 0px;
-    height : 2cm;
-    padding-right : 0.5cm;
-    padding-top : 0.5cm;
-    color : whitesmoke;
-}
 
 .username {
     font-size : 16pt;
     margin-bottom : 0.1cm;
 }
 
-.student-id {
+.instructor-id {
     font-size : 14pt;
     text-align : right;
 }
@@ -414,85 +429,74 @@ a {
 .text-next-to-profile {
     margin-right : 0.5cm;
 }
-/*calendar*/
-.calendar-home {
-    /*general container look*/
-    border-radius : 15px;
-    margin : 0.2cm 0.3cm;
-    margin-top : 2cm;
-    padding-left : 0.4cm;
-    padding-top : 0.4cm;
-    padding-bottom : 0.4cm;
-    background-color : var(--w-mid-purple);
-    color : whitesmoke;
+
+
+/*Course performance*/
+.class-performance-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.4cm;
+    flex-grow: 1;
+    height : 50%;
+   
+}
+.performance-card {
+    background: var(--w-purple-grey);
+    border-radius: 15px;
+    padding: 30px;
+    flex-grow: 1;
+
 }
 
-
-.month {
-    grid-area : month;
-    justify-self : center;
-    margin-bottom : 0.2cm;
+.class-performance-title {
+    font-size: 14pt;
+    color: #111;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
     text-align: center;
-    border-bottom: whitesmoke 1px solid;
-    width: 75%;
 }
 
-.calendar-home {
-    /*grid stuff*/
-    display : grid;
-    grid-template-columns: [line-1]1fr [line-2]1fr [line-3]1fr [line-4]1fr [line-5]1fr [line-6]1fr [line-7]1fr [line-8];
-    grid-auto-rows: 1cm;
-    grid-template-areas :
-    "month month month month month month month";
+.courseRow {
+    margin-bottom: 16px;
 }
 
-/*Bar chart*/
-
-.class-performance-bar-chart-ul {
-    display : flex;
-    gap : 1.4cm;
-    border : solid 1px var(--w-purple-grey);
-    height : 5cm;
-    border-radius : 15px;
-    margin : 0.2cm 0.2cm;
-    align-items: flex-end;
-    padding-left : 0.5cm;
-    position : relative;
+.courseLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12pt;
+    color: #111;
+    text-transform: uppercase;
+    margin-bottom: 6px;
 }
 
-.class-performance-container p {
-    padding-left : 0.5cm;
-    margin-top : 1cm;
+.barBackground {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    height: 16px;
+    width: 100%;
 }
 
-.li-bar {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    width : 1cm;
-    background-color : var(--w-yellow);
-    display : flex;
-    justify-self : center;
-    
+.barFill {
+    height: 16px;
+    border-radius: 20px;
+    background-color: var(--w-yellow);
+    transition: width 0.5s ease;
+    min-width: 5%;
 }
 
-.bar-label {
-    gap : 0.2cm;
-    position : absolute;
-    bottom : -30px;
-    margin-right : 0.2cm;
-}
-.bar-1 {
-    height : 75%;
+
+.overall {
+    text-align: center;
+    font-size: 12pt;
+    color: #111;
+    letter-spacing: 1px;
 }
 
-.bar-2 {
-    height : 60%;
+.overallNumber {
+    font-size: 14pt;
+    color: #111;
 }
 
-.bar-3 {
-    height : 90%;
-}
 
-.bar-4 {
-    height : 55%;
-}
+
+

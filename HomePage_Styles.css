@@ -41,94 +41,68 @@ a {
 }
 
 
-/* elements on the left */
-.left {
-    color : whitesmoke;
-    width : 15%;
-    display : flex;
-    flex-direction : column;
-    background: #310047;
-    background: linear-gradient(132deg, rgba(49, 0, 71, 1) 0%, rgba(49, 0, 71, 1) 13%, rgba(49, 0, 71, 1) 25%, rgba(50, 0, 71, 1) 35%, rgba(71, 0, 71, 1) 80%);
-    box-shadow : 2cm 0 2cm 0 -6 rgb(20, 20, 20);
-
-}
-
-.left-title {
-    font-size : 16pt;
-    margin-top : 1cm;
-    margin-bottom : 2.5cm;
-    margin-left : 0.4cm;
-}
-
-.left-menu-option a {
-    width : 100%;
-}
-
-.left-menu-option:has(a:hover) {
-    background-color: var(--w-dark-purple1);
-    border-right : solid var(--w-magenta) 5px;
-}
-
-.left-menu-option:has(a:focus) {
-    background-color: var(--w-dark-purple1);
-    border-right : solid var(--w-magenta) 5px;
-}
-
-.left-menu-top {
-    display : flex;
-    flex-direction : column;
-    justify-content: flex-center;
-    flex-grow : 1;
-
-}
-
-
-.left-menu-top li {
-    color : whitesmoke;
-    display: flex;
-    align-items : center;
-}
-
-.all-classes-box {
-    flex-direction : column;
-}
-
-
-.left-menu-bottom li {
-    color : whitesmoke;
-    display : flex;
-    align-items : center;
-}
-
-.left-menu-bottom {
-    display : flex;
-    flex-direction : column;
-    justify-content : flex-end;
-}
-.left-menu-option {
-    padding-bottom : 0.25cm;
-    padding-top : 0.25cm;
-    font-size : 16pt;
-    color : grey;
-    padding-left : 0.4cm;
-}
-
-.left-menu-option img {
-    height: 30px;
-    width : 30px;
-    margin-right : 0.2cm;
-}
 
 /* elements in the center area */
-.center {
+.main {
     background-color: whitesmoke;
-    width : 60%;
     flex-grow : 1;
     display : block;
-    max-width : 60%;
+    height : auto;
+    overflow : auto;
+
+}
+
+.sub-main {
+    background-color: whitesmoke;
+    display : flex;
     height : auto;
     overflow : auto;
 }
+
+.sub-main-left {
+    display : block;
+    width : 60%;
+    flex-grow : 1;
+    padding-left : 0.4cm; 
+}
+
+.center-top {
+    display : flex;
+    flex-grow : 1;
+    height : 1.2in;
+}
+
+
+.top-right {
+    display : flex;
+    width : 30%;
+    justify-content : flex-end;
+    align-items : center;
+    height : 2cm;
+    padding-right : 0.5cm;
+    padding-top : 0.5cm;
+    color : #111;
+}
+
+.username {
+    font-size : 16pt;
+    margin-bottom : 0.1cm;
+}
+
+.student-id {
+    font-size : 14pt;
+    text-align : right;
+}
+
+.profile-photo {
+    width : 1.5cm;
+    height : 1.5cm;
+}
+
+.text-next-to-profile {
+    margin-right : 0.5cm;
+}
+
 
 .uppermost-center-line {
     display : flex;
@@ -136,6 +110,7 @@ a {
     padding-right : 1cm;
     padding-left : 0.5cm;
     align-items : center;
+    flex-grow : 1;
 }
 
 .center-title {
@@ -217,6 +192,13 @@ a {
     margin-top : 5px;
 }
 
+.course-area {
+    border-radius : 15px;
+    background-color: rgb(225, 222, 230);
+    /* rgb(204, 201, 210) */
+    padding : 1.2cm 12%;
+}
+
 .filter-by-line {
     display : flex;
     padding-top : 1cm;
@@ -267,13 +249,9 @@ a {
     background-color : var(--w-orange);
 }
 
-.course-area {
+.sub-course-area {
     border-radius : 15px;
     background-color: rgb(225, 222, 230);
-    /* rgb(204, 201, 210) */
-    margin-left : 0.2cm;
-    margin-right : 0.2cm;
-    padding : 1.2cm 12%;
     display : grid;
     grid-template-columns : 1fr 1fr;
     grid-template-rows : auto;
@@ -412,15 +390,15 @@ a {
 }
 
 .course-name {
-    font-size : 18pt;
-    color : black;
+    font-size : 12pt;
 }
 .course-code {
     font-size : 14pt;
+    color : black;
 }
 
 .course-section {
-    font-size : 14pt;
+    font-size : 12pt;
 }
 
 .deadline-title {
@@ -434,7 +412,7 @@ a {
 .deadlines-container {
     border-radius: 15px;
     background-color : rgb(225, 222, 230);
-    margin : 0.2cm;
+    margin-top : 0.4cm;
     padding : 0.2cm 12%;
 }
 
@@ -455,107 +433,58 @@ a {
     background-color: var(--w-orange);
 }
 
-.right {
-    display : block;
-    width : 25%;
-    background: #310047;
-    background: linear-gradient(301deg, rgba(49, 0, 71, 1) 0%, rgba(49, 0, 71, 1) 13%, rgba(49, 0, 71, 1) 25%, rgba(50, 0, 71, 1) 35%, rgba(71, 0, 71, 1) 80%);
-    color : whitesmoke;
-}
-
-.top-right {
+.sub-main-right {
     display : flex;
-    justify-content : flex-end;
-    align-items : center;
-    border : solid red 0px;
-    height : 2cm;
+    flex-direction: column;
+    width : 25%;
+    
+    padding-top : 0;
+    padding-left : 0.5cm;
     padding-right : 0.5cm;
-    padding-top : 0.5cm;
-    color : whitesmoke;
-}
-
-.username {
-    font-size : 16pt;
-    margin-bottom : 0.1cm;
-}
-
-.student-id {
-    font-size : 14pt;
-    text-align : right;
-}
-
-.profile-photo {
-    width : 1.5cm;
-    height : 1.5cm;
-}
-
-.text-next-to-profile {
-    margin-right : 0.5cm;
-}
-/*calendar*/
-.calendar-home {
-    /*general container look*/
     border-radius : 15px;
-    margin : 0.2cm 0.5cm;
-    margin-top : 1cm;
-    padding-left : 0.4cm;
-    padding-top : 0.4cm;
-    padding-bottom : 0.4cm;
-    background-color : var(--w-mid-purple);
-    color : whitesmoke;
+    margin-right : 0.2cm;
 }
 
-.month {
-    grid-area : month;
-    justify-self : center;
-    text-align: center;
-    margin-bottom : 0.2cm;
-    border-bottom: whitesmoke 1px solid;
-    width: 75%;
+/*Calendar*/
+.calend-card{
+    /*
+  background: var(--w-purple-grey);
+  */
+   background: linear-gradient(301deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%,rgba(71,0,71,1) 80%);
+
+  border-radius: var(--radius);
+  padding: 0.5cm 0.6cm;
+  margin: 0;
+  border: 0;
+  flex-grow : 1;
 }
 
-.calendar-home {
-    /*grid stuff*/
-    display : grid;
-    grid-template-columns: [line-1]1fr [line-2]1fr [line-3]1fr [line-4]1fr [line-5]1fr [line-6]1fr [line-7]1fr [line-8];
-    grid-auto-rows: 1cm;
-    grid-template-areas :
-    "month month month month month month month";
-
-
-}
-
-
-#day-27 {
-    background-color: var(--w-magenta);
-    border-radius: 100%;
-    padding : 0.1cm;
-}
 /*Averages*/
 .averages-container {
-    font-family: 'Arial', cursive;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-left : 0.2cm;
-    margin-right : 0.2cm;
-    margin-top : 1cm;
+    margin-top : 0.4cm;
+    margin-bottom : 0;
+    height : 50%;
    
 }
-.card {
-    background: white;
-    border-radius: 20px;
+
+.averages-bars-container {
+     background: rgba(255,255,255,0.12);
+     border-radius: 15px;
+     padding : 0.3cm 0.4cm 0.1cm 0.4cm;
+
+}
+.average-card {
+    background: linear-gradient(301deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%,rgba(71,0,71,1) 80%);
+    border-radius: 15px;
     padding: 30px;
-    width: 350px;
-    box-shadow: 4px 4px 0px #1a1a1a;
+    flex-grow: 1;
 
 }
 
 .averages-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #470047;
-    text-transform: uppercase;
+    font-size: 14pt;
     letter-spacing: 2px;
     margin-bottom: 20px;
     text-align: center;
@@ -568,15 +497,13 @@ a {
 .courseLabel {
     display: flex;
     justify-content: space-between;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #470047;
+    font-size: 12pt;
     text-transform: uppercase;
     margin-bottom: 6px;
 }
 
 .barBackground {
-    background-color: #e0e0e0;
+    background-color: whitesmoke;
     border-radius: 20px;
     height: 16px;
     width: 100%;
@@ -585,28 +512,19 @@ a {
 .barFill {
     height: 16px;
     border-radius: 20px;
-    background-color: #5b2d8e;
+    background-color: var(--w-yellow);
     transition: width 0.5s ease;
     min-width: 5%;
 }
 
-.divider {
-    border: none;
-    border-top: 2px solid #e0e0e0;
-    margin: 20px 0;
-}
+
 
 .overall {
     text-align: center;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #470047;
-    text-transform: uppercase;
+    font-size: 14pt;
     letter-spacing: 1px;
 }
 
 .overallNumber {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #5b2d8e;
+    font-size: 14pt;
 }

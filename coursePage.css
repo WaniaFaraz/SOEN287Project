@@ -39,8 +39,7 @@ button {
 /* the website layout */
 .app {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 15% 1fr; /* sidebar + page */
+    display: flex;
 }
 
 /* sidebar */
@@ -52,7 +51,7 @@ button {
     gap: 18px;
 
 
-   background: linear-gradient(132deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%, rgba(71,0,71,1)80%)
+   background: linear-gradient(132deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%, rgba(71,0,71,1)80%);
    box-shadow: 2cm 0 2cm 0 -6 rgb(20, 20, 20);
 }
 
@@ -64,12 +63,6 @@ button {
     margin-left: 0.2cm;
 }
 
-.logo-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.25);
-}
 
 .brand-title {
     font-size: 16pt;
@@ -116,37 +109,116 @@ button {
 
 /* page area */
 .page {
+    flex-grow : 1;
     display: grid;
     grid-template-rows: auto 1fr;
 }
 
 /* top bar */
 .topbar {
-    height: 1in;
+    height: 1.2in;
     padding: 0 1cm 0 0.5cm;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-}
 
+}
+.course-title {
+    flex-grow: 1;
+}
 .course-title h2 {
     margin: 0;
-    font-family: 'Oswald', sans-serif;
-    font-size: 30px;
-    line-height: 1;
+    font-family : oswald;
+    flex-grow : 1;
+    font-size : 30pt;
+    font-weight: 400;
 }
 .course-title p {
     margin: 6px 0 0;
-    color: var(--muted);
     font-size: 12pt;
 }
 
-.topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+.top-right {
+    display : flex;
+    justify-content : flex-end;
+    align-items : center;
+    height : 2cm;
+    padding-right : 0.5cm;
+    padding-top : 0.5cm;
+    color : #111;
+    width: 25%;
 }
+
+.username {
+    font-size : 16pt;
+    margin-bottom : 0.1cm;
+}
+
+.instructor-id {
+    font-size : 14pt;
+    text-align : right;
+}
+
+.profile-photo {
+    width : 1.5cm;
+    height : 1.5cm;
+}
+
+.text-next-to-profile {
+    margin-right : 0.5cm;
+}
+
+
+.left-icons-in-uppermost-center-line {
+    display : flex;
+    width : 40%;
+    align-items : center;
+    gap : 4%;
+}
+
+.search-bar-container {
+    display : flex;
+    border : var(--w-purple-grey) solid 1px;
+    background-color: whitesmoke;
+    flex-grow : 1;
+    height : 0.8cm;
+    border-radius : 50px;
+    padding-right : 5%;
+    padding-left : 2.5%;
+    align-items : center;
+
+}
+
+.search-icon {
+    width : 20px;
+    height : 20px;
+
+}
+
+.search-bar-input:hover {
+    outline : none;
+}
+
+.search-bar-input:focus {
+    outline: none;
+}
+
+.search-bar-input {
+    border : 0px;
+    background-color: whitesmoke;
+    flex-grow : 1;
+    justify-content : flex-end;
+    font-size : 12pt;
+    font-style : inherit;
+    margin-left : 2%;
+}
+
+.notifications-icon {
+    width : 25px;
+    height : 25px;
+
+}
+
+
 
 .icon-btn {
     border: 0;
@@ -185,7 +257,7 @@ button {
 .content-grid {
     padding: 0 0.2cm 0.4cm;
     display: grid;
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 3fr 1fr; /* 75% 25% */
     gap: 0.4cm;
     align-items: start;
 }
@@ -195,7 +267,7 @@ button {
     border: 0;
     border-radius: var(--radius);
     padding: 0.5cm 0.6cm;
-    margin: 0 0.2cm;
+    margin: 0 0.2cm 0.4cm 0.2cm;
 }
 
 .card-header {
@@ -220,7 +292,7 @@ button {
 }
 
 /* table */
-.table-wrap, .bars, .tasks, .calendar{
+.table-wrap, .bars, .tasks{
        background: var(--card);
        border-radius: var(--radius);
        padding: 0.5cm;
@@ -361,70 +433,38 @@ button {
 
 
 
-.calendar {
-    margin-top: 8px;
-}
-.cal-head, .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
-}
-.cal-head span {
-    font-size: 12px;
-    color: var(--muted);
-    text-align: center;
-    font-weight: 800;
-}
-
-.cal-day {
-    height: 34px;
-    border-radius: 10px;
-    border: 1px solid var(--w-purple-grey);
-    display: grid;
-    place-items: center;
-    font-size: 12px;
-    background: #fff;
-}
-
-.cal-day.dim {
-    background: transparent;
-    border-color: transparent;
-    opacity: 0.4;
-
-}
-.cal-day.highlight {
-    background: rgba(255, 143, 47, 0.18);
-    border-color: rgba(255, 143, 47, 0.35);
-    font-weight: 900;
-}
-.cal-legend {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-}
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: var(--w-orange);
-   
-}
 .rightpanel{
-  background: linear-gradient(301deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%,rgba(71,0,71,1) 80%);
+  /* background: linear-gradient(301deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%,rgba(71,0,71,1) 80%); */
   color: whitesmoke;
   border-radius: 15px;
-  padding: 0.5cm 0.4cm;
 }
 
 .rightpanel .card{
   background: rgba(255,255,255,0.12);
+  background: linear-gradient(301deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%,rgba(71,0,71,1) 80%);
   border: none;
+  margin : 0 0 0.4cm 0;
 }
 
-.rightpanel .tasks, .rightpanel .calendar{
-  background: rgba(255,255,255,0.92);
-  color: #111;
+
+/* this is the css added for the enter grades section */
+.mark-input {
+    width: 68px;
+    padding: 6px 8px;
+    border: 1.5px solid var(--w-purple-grey);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    text-align: center;
+    background: #fff;
+    outline: none;
+}
+.mark-input:focus {
+    border-color: var(--w-orange);
+}
+.percent-cell {
+    font-weight: 800;
+    color: var(--w-magenta);
 }
 
 /* this is the css added for the enter grades section */

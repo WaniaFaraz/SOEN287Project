@@ -41,102 +41,48 @@ a {
 }
 
 
-/* elements on the left */
-.left {
-    color : whitesmoke;
-    width : 15%;
-    display : flex;
-    flex-direction : column;
-    background: #310047;
-    background: linear-gradient(132deg, rgba(49, 0, 71, 1) 0%, rgba(49, 0, 71, 1) 13%, rgba(49, 0, 71, 1) 25%, rgba(50, 0, 71, 1) 35%, rgba(71, 0, 71, 1) 80%);
-    box-shadow : 2cm 0 2cm 0 -6 rgb(20, 20, 20);
-
-}
-
-.left-title {
-    font-size : 16pt;
-    margin-top : 1cm;
-    margin-bottom : 2.5cm;
-    margin-left : 0.4cm;
-}
-
-.left-menu-option a {
-    width : 100%;
-}
-
-.left-menu-option:has(a:hover) {
-    background-color: var(--w-dark-purple1);
-    border-right : solid var(--w-magenta) 5px;
-}
-
-.left-menu-option:has(a:focus) {
-    background-color: var(--w-dark-purple1);
-    border-right : solid var(--w-magenta) 5px;
-}
-
-.left-menu-top {
-    display : flex;
-    flex-direction : column;
-    justify-content: flex-center;
-    flex-grow : 1;
-
-}
-
-.left-menu-top li {
-    color : whitesmoke;
-    display: flex;
-    align-items : center;
-}
-
-.left-menu-bottom li {
-    color : whitesmoke;
-    display : flex;
-    align-items : center;
-}
-
-.left-menu-bottom {
-    display : flex;
-    flex-direction : column;
-    justify-content : flex-end;
-}
-.left-menu-option {
-    padding-bottom : 0.25cm;
-    padding-top : 0.25cm;
-    font-size : 16pt;
-    color : grey;
-    padding-left : 0.4cm;
-}
-
-.left-menu-option img {
-    height: 30px;
-    width : 30px;
-    margin-right : 0.2cm;
-}
-
 /* elements in the center area */
-.center {
+.main {
     background-color: whitesmoke;
-    width : 60%;
     flex-grow : 1;
     display : block;
-    max-width : 60%;
     height : auto;
     overflow : auto;
 }
 
+.sub-main {
+    display : flex;
+    height : 82vh;
+    overflow : clip;
+
+}
+
+.sub-main-left {
+    flex-grow: 1;
+    overflow-y : auto;
+}
+.center-top {
+    display: flex;
+    flex-grow : 1;
+    height : 1.5in;
+    margin-top: 0.4cm;
+}
+
 .uppermost-center-line {
+    /* top bar excluding profile pic and username*/
     display : flex;
     height : 1in;
-    padding-right : 1cm;
+    flex-grow: 1;
     padding-left : 0.5cm;
     align-items : center;
+    
 }
 
 .center-title {
-    /*My courses*/
+    /*Welcome Professor X*/
     font-family : oswald;
-    
-    font-size : 20pt;
+    flex-grow: 1;
+    font-size : 30pt;
 }
 
 .instructor-welcome-message {
@@ -215,15 +161,44 @@ a {
     margin-top : 5px;
 }
 
+.top-right {
+    display : flex;
+    justify-content : flex-end;
+    align-items : center;
+    height : 2cm;
+    padding-right : 0.5cm;
+    padding-top : 0.5cm;
+    color : #111;
+    width: 25%;
+}
 
+.username {
+    font-size : 16pt;
+    margin-bottom : 0.1cm;
+}
+
+.instructor-id {
+    font-size : 14pt;
+    text-align : right;
+}
+
+.profile-photo {
+    width : 1.5cm;
+    height : 1.5cm;
+}
+
+.text-next-to-profile {
+    margin-right : 0.5cm;
+}
 
 .disappear {
     display : none;
 }
 
+
 .instructor-stats {
     padding : 0.5cm 1cm;
-    margin : 0.2cm 0.2cm;
+    margin : 0cm 0.2cm 0.2cm 0.2cm;
     background-color : var(--w-purple-grey);
     border-radius : 15px;
 }
@@ -428,16 +403,15 @@ a {
     background-color : whitesmoke;
 }
 .course-name {
-    font-size : 18pt;
-    color : black;
-    flex-grow: 1;
+    font-size : 12pt;
 }
 .course-code {
     font-size : 14pt;
+    color : black;
 }
 
 .course-section {
-    font-size : 14pt;
+    font-size : 12pt;
 }
 
 .recent-activity-title {
@@ -472,120 +446,75 @@ a {
     background-color: var(--w-orange);
 }
 
-.right {
-    display : block;
+.sub-main-right {
+    display : flex;
+    flex-direction: column;
     width : 25%;
-    background: #310047;
-    background: linear-gradient(301deg, rgba(49, 0, 71, 1) 0%, rgba(49, 0, 71, 1) 13%, rgba(49, 0, 71, 1) 25%, rgba(50, 0, 71, 1) 35%, rgba(71, 0, 71, 1) 80%);
-    color : whitesmoke;
+    border-radius: 15px;
+    margin-right : 0.4cm;
 }
 
-.top-right {
-    display : flex;
-    justify-content : flex-end;
-    align-items : center;
-    border : solid red 0px;
-    height : 2cm;
-    padding-right : 0.5cm;
-    padding-top : 0.5cm;
-    color : whitesmoke;
+/*Course performance*/
+.class-performance-container {
+    margin-bottom: 0.4cm;
+    height : 50%;
+   
 }
 
-.username {
-    font-size : 16pt;
-    margin-bottom : 0.1cm;
-}
-
-.student-id {
-    font-size : 14pt;
-    text-align : right;
-}
-
-.profile-photo {
-    width : 1.5cm;
-    height : 1.5cm;
-}
-
-.text-next-to-profile {
-    margin-right : 0.5cm;
-}
-/*calendar*/
-.calendar-home {
-    /*general container look*/
-    border-radius : 15px;
-    margin : 0.2cm 0.3cm;
-    margin-top : 2cm;
-    padding-left : 0.4cm;
-    padding-top : 0.4cm;
-    padding-bottom : 0.4cm;
-    background-color : var(--w-mid-purple);
-    color : whitesmoke;
-}
-
-
-.month {
-    grid-area : month;
-    justify-self : center;
-    margin-bottom : 0.2cm;
+.class-performance-title {
+    font-size: 14pt;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
     text-align: center;
-    border-bottom: whitesmoke 1px solid;
-    width: 75%;
 }
 
-.calendar-home {
-    /*grid stuff*/
-    display : grid;
-    grid-template-columns: [line-1]1fr [line-2]1fr [line-3]1fr [line-4]1fr [line-5]1fr [line-6]1fr [line-7]1fr [line-8];
-    grid-auto-rows: 1cm;
-    grid-template-areas :
-    "month month month month month month month";
+.courseRow {
+    margin-bottom: 16px;
 }
 
-/*Bar chart*/
-
-.class-performance-bar-chart-ul {
-    display : flex;
-    gap : 1.4cm;
-    border : solid 1px var(--w-purple-grey);
-    height : 5cm;
-    border-radius : 15px;
-    margin : 0.2cm 0.2cm;
-    align-items: flex-end;
-    padding-left : 0.5cm;
-    position : relative;
+.courseLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12pt;
+    text-transform: uppercase;
+    margin-bottom: 6px;
 }
 
-.class-performance-container p {
-    padding-left : 0.5cm;
-    margin-top : 1cm;
+.barBackground {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    height: 16px;
+    width: 100%;
 }
 
-.li-bar {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    width : 1cm;
-    background-color : var(--w-yellow);
-    display : flex;
-    justify-self : center;
-    
+.barFill {
+    height: 16px;
+    border-radius: 20px;
+    background-color: var(--w-yellow);
+    transition: width 0.5s ease;
+    min-width: 5%;
 }
 
-.bar-label {
-    gap : 0.2cm;
-    position : absolute;
-    bottom : -30px;
-    margin-right : 0.2cm;
-}
-.bar-1 {
-    height : 75%;
+
+.overall {
+    text-align: center;
+    font-size: 12pt;
+    letter-spacing: 1px;
 }
 
-.bar-2 {
-    height : 60%;
+.overallNumber {
+    font-size: 14pt;
 }
 
-.bar-3 {
-    height : 90%;
+/*Calendar*/
+.calend-card{
+    background: linear-gradient(301deg, rgba(49,0,71,1) 0%, rgba(49,0,71,1) 25%, rgba(50,0,71,1) 35%,rgba(71,0,71,1) 80%);
+
+  border-radius: var(--radius);
+  padding: 0.5cm 0.6cm;
+  margin: 0;
+  border: 0;
+  flex-grow: 1;
 }
 
 .bar-4 {
