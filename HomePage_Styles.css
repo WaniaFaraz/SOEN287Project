@@ -59,7 +59,15 @@ a {
     height:85vh;
     overflow-y: hidden;
 }
+.center-top {
+    display : flex;
+    flex-grow : 1;
+    height : 15vh;
+}
 
+.top-right {
+    width : 25%;
+}
 .sub-main-left {
     display : block;
     width : 60%;
@@ -68,131 +76,6 @@ a {
     overflow-y: auto;
 }
 
-.center-top {
-    display : flex;
-    flex-grow : 1;
-    height : 1.2in;
-}
-
-
-.top-right {
-    display : flex;
-    width : 25%;
-    justify-content : flex-end;
-    align-items : center;
-    height : 2cm;
-    padding-right : 1cm;
-    padding-top : 0.5cm;
-    color : #111;
-}
-
-.username {
-    font-size : 16pt;
-    margin-bottom : 0.1cm;
-}
-
-.student-id {
-    font-size : 14pt;
-    text-align : right;
-}
-
-.profile-photo {
-    width : 1.5cm;
-    height : 1.5cm;
-}
-
-.text-next-to-profile {
-    margin-right : 0.5cm;
-}
-
-
-.uppermost-center-line {
-    display : flex;
-    height : 1in;
-    padding-right : 1cm;
-    padding-left : 0.5cm;
-    align-items : center;
-    flex-grow : 1;
-}
-
-.center-title {
-    /*My courses*/
-    font-family : oswald;
-    flex-grow : 1;
-    font-size : 30pt;
-}
-
-.left-icons-in-uppermost-center-line {
-    display : flex;
-    width : 40%;
-    align-items : center;
-    gap : 4%;
-}
-
-.search-bar-container {
-    display : flex;
-    border : var(--w-purple-grey) solid 1px;
-    background-color: whitesmoke;
-    flex-grow : 1;
-    height : 0.8cm;
-    border-radius : 50px;
-    padding-right : 5%;
-    padding-left : 2.5%;
-    align-items : center;
-
-}
-
-.search-icon {
-    /*<a target="_blank" href="https://icons8.com/icon/59878/search">Search</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>*/
-    width : 20px;
-    height : 20px;
-
-}
-
-.search-bar-input:hover {
-    outline : none;
-}
-
-.search-bar-input:focus {
-    outline: none;
-}
-
-.search-bar-input {
-    border : 0px;
-    background-color: whitesmoke;
-    flex-grow : 1;
-    justify-content : flex-end;
-    font-size : 12pt;
-    font-style : inherit;
-    margin-left : 2%;
-}
-
-.notifications-icon {
-    /*credit: */
-    /*<a target="_blank" href="https://icons8.com/icon/4mJGn1D1b2Xr/notification">Notification</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>*/
-    width : 25px;
-    height : 25px;
-
-}
-
-.hamburger-menu-button {
-    width : 20px;
-    display : block;
-    align-self : flex-center;
-    padding : 2px 0;
-}
-
-.hamburger-bar {
-    width : 100%;
-    display : block;
-    height : 1.5pt;
-    border-radius : 2px;
-    background: #111;
-}
-
-.hamburger-bar + .hamburger-bar {
-    margin-top : 5px;
-}
 
 .course-area {
     border-radius : 15px;

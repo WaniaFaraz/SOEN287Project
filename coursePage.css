@@ -78,86 +78,8 @@ button {
 }
 
 .top-right {
-    display : flex;
-    justify-content : flex-end;
-    align-items : center;
-    height : 2cm;
-    padding-right : 0.5cm;
-    padding-top : 0.5cm;
-    color : #111;
-    width: 25%;
+    width:25%;
 }
-
-.username {
-    font-size : 16pt;
-    margin-bottom : 0.1cm;
-}
-
-.instructor-id {
-    font-size : 14pt;
-    text-align : right;
-}
-
-.profile-photo {
-    width : 1.5cm;
-    height : 1.5cm;
-}
-
-.text-next-to-profile {
-    margin-right : 0.5cm;
-}
-
-
-.left-icons-in-uppermost-center-line {
-    display : flex;
-    width : 40%;
-    align-items : center;
-    gap : 4%;
-}
-
-.search-bar-container {
-    display : flex;
-    border : var(--w-purple-grey) solid 1px;
-    background-color: whitesmoke;
-    flex-grow : 1;
-    height : 0.8cm;
-    border-radius : 50px;
-    padding-right : 5%;
-    padding-left : 2.5%;
-    align-items : center;
-
-}
-
-.search-icon {
-    width : 20px;
-    height : 20px;
-
-}
-
-.search-bar-input:hover {
-    outline : none;
-}
-
-.search-bar-input:focus {
-    outline: none;
-}
-
-.search-bar-input {
-    border : 0px;
-    background-color: whitesmoke;
-    flex-grow : 1;
-    justify-content : flex-end;
-    font-size : 12pt;
-    font-style : inherit;
-    margin-left : 2%;
-}
-
-.notifications-icon {
-    width : 25px;
-    height : 25px;
-
-}
-
 
 
 .icon-btn {
