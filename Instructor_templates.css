@@ -17,6 +17,7 @@
 body {
     background-color: whitesmoke;
     display: flex;
+    overflow: hidden;
 }
 
 .right {
@@ -25,12 +26,13 @@ body {
 
 .container {
     background-color: var(--w-purple-grey);
-    margin: 0.2cm;
+    margin: 0.4cm;
     padding: 0.5cm;
     border-radius: 15px;
     flex-grow: 1;
-    height : 83vh;
+    height: 83vh;
     overflow-y: auto;
+    scrollbar-color: var(--w-purple-grey) whitesmoke;
 }
 
 .pageTitle {
