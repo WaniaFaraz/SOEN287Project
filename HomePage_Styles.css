@@ -56,7 +56,8 @@ a {
     background-color: whitesmoke;
     display : flex;
     height : auto;
-    overflow : auto;
+    height:85vh;
+    overflow-y: hidden;
 }
 
 .sub-main-left {
@@ -64,6 +65,7 @@ a {
     width : 60%;
     flex-grow : 1;
     padding-left : 0.4cm; 
+    overflow-y: auto;
 }
 
 .center-top {
@@ -206,11 +208,9 @@ a {
     display:none;
 }
 
-.add-course-btn-container {
-    display : flex;
-    width : 100%;
+.add-course-container {
+    display: flex;
     justify-content: flex-end;
-
 }
 #add-course-toggle:checked ~ .add-course-modal{
   display:flex !important;
@@ -498,7 +498,8 @@ a {
     display : flex;
     flex-direction: column;
     width : 25%;
-    
+    height:85vh;
+    overflow-y: clip;
     padding-top : 0;
     padding-left : 0.5cm;
     padding-right : 0.5cm;
