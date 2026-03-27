@@ -23,6 +23,14 @@ router.get("/course-page", (request, response) => {
 router.get("/account-settings", (request, response) => {
     response.sendFile(dir + "/Manage_Account.html");
 })
+//INSTRUCTOR COURSE TEMPLATES
+router.get("/course-templates", (request, response) => {
+    response.sendFile(dir + "/Instructor_templates.html");
+})
+//STUDENT TEMPLATE PREVIEW
+router.get("/course-template-preview", (request, response) => {
+    response.sendFile(dir + "/Student_templates.html");
+})
 
 //export routers
 module.exports = router;

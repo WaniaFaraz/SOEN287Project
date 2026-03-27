@@ -4,15 +4,15 @@ const dir = __dirname;
 //Student routes
 //STUDENT SIGN IN
 router.get("/sign-in", (request, response) => {
-    response.sendFile("/SignIn.html");
+    response.sendFile(dir + "/SignIn.html");
 })
 //STUDENT CREATE ACCOUNT
 router.get("/create-account", (request, response) => {
-    response.sendFile("/SignUp.html");
+    response.sendFile(dir + "/SignUp.html");
 })
 //HOME PAGE
 router.get("/home", (request, response) => {
-    response.sendFile(dir+"/HomePage.html");
+    response.sendFile(dir + "/HomePage.html");
 })
 //COURSE HOME PAGE
 router.get("/course-page", (request, response) => {
@@ -21,6 +21,10 @@ router.get("/course-page", (request, response) => {
 //ASSIGNMENTS FOR STUDENTS
 router.get("/assignments", (request, response) => {
     response.sendFile(dir + "/ManageAssessments_Page.html");
+})
+//COURSE TEMPLATES FOR STUDENTS (MADE BY PROFESSORS)
+router.get("/course-templates", (request, response) => {
+    response.sendFile(dir + "/Student_templates.html");
 })
 //STUDENT ACCOUNT SETTINGS
 router.get("/account-settings", (request, response) => {
