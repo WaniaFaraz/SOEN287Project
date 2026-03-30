@@ -1,6 +1,26 @@
-//This is the file that holds all the functions that queries the database
-//Add students, instructors, assignments,...
-//Edit students, instructors, assignments,...
+//GOAL OF FILE:
+//  Contains all the functions to retrieve data from and store data in the database
+//  (In other words: this file contains the functions that query the database)
+
+//INSTRUCTIONS TO USE DATABASE
+//  The database used is a mySQL database
+//  (From slides on databases) Install xampp - this has mySQL, apache,...
+//  Open the xampp control panel and start apache and mySQL
+//  Go to the browser and type: "localhost" - this should lead to the xampp control center
+//  Click on phpmyadmin
+//  **INSTRUCTIONS TO GET DATABASE COMING SOON**
+
+//QUERY FUNCTIONS
+//  Most of the querying functions required can be found here
+//  If any more are needed, here is the template: (things within <> are what you need to replace)
+/**     async function <function name> () {
+ *         const [rows] = await pool.query(<queryString>);
+ *          return rows;
+ *      }
+ *   Note: the queryString is a mySQL command. You can get it by copy and pasting commands from mySQL in phpMyAdmin
+*/
+// After creating a function, make sure to include it in the exports at the very bottom of the file
+
 
 const mysql = require("mysql2");
 const pool = mysql.createPool({
@@ -49,6 +69,21 @@ async function addInstructor(instructorId, firstName, lastName, emailAddress) {
     console.log("Instructor added with ID: ", professorID);
 }
 
-module.exports = { getStudents, getStudentById, addStudent,
-                    addInstructor, getInstructors, getInstructorById};
+
+//Get courses of a specific student
+async function getCoursesOfStudent(studentid) {
+    const queryString = "SELECT * FROM `student_courses` WHERE `studentID` = ?";
+    const [rows] = await pool.query(queryString, [studentid]);
+    return rows;
+}
+
+module.exports = { 
+    getStudents,
+    getStudentById,
+    addStudent,
+    addInstructor,
+    getInstructors,
+    getInstructorById,
+    getCoursesOfStudent
+};
 

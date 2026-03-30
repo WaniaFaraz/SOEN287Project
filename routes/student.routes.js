@@ -1,6 +1,11 @@
-const express = require("express");
+//GOAL OF FILE:
+//  Contains all the routes to navigate between pages for students
+//  Most likely should not require any additional routes - ask 
+
+//import necessary modules
+const express = require("express"); //for css and js files
 const router = express.Router();
-const dir = __dirname;
+const dir = __dirname.slice(0,-7); //remove the "/routes" part from the directory. (Since using ../ causes a "forbidden" message to appear)
 //Student routes
 //STUDENT SIGN IN
 router.get("/sign-in", (request, response) => {
@@ -12,6 +17,7 @@ router.get("/create-account", (request, response) => {
 })
 //HOME PAGE
 router.get("/home", (request, response) => {
+    console.log(dir);
     response.sendFile(dir + "/html/HomePage.html");
 })
 //COURSE HOME PAGE
@@ -34,31 +40,6 @@ router.get("/account-settings", (request, response) => {
 router.get("/log-out", (request, response) => {
     response.sendFile(dir + "/html/LogOut.html");
 })
-
-
-
-//DATABASE QUERIES
-//Temporary - to be modified for other use if necessary - can be used as an example for using the querying functions
-const { getStudents, getStudentById } = require("./database");
-//GET ALL STUDENTS - RETURNS AN ARRAY OF STUDENT JSON OBJECTS
-router.get('/get-students', async (request, response) => {
-    const students = await getStudents();
-    response.json(students);
-});
-//GET A STUDENT FROM THE ID
-router.get('/get-students/:id', async (request, response) => {
-    const id = request.params.id;
-    const student = await getStudentById(id);
-    response.json(student);
-})
-//ADD A STUDENT
-//add code here for adding students after creating the account info
-//note: there is an addstudent(id, firstName, lastName, emailAddress) function
-//      in the database file that will add the student to the database that can be used
-
-
-
-
 
 
 //export routes.js file

@@ -21,8 +21,11 @@ const PORT = 8000;
 
 //all routes -- leads to routes file
 app.use(express.static('public'));
-app.use("/student", require("./student.routes"));
-app.use("/instructor", require("./instructor.routes"))
+app.use("/student", require("./routes/student.routes"));
+app.use("/instructor", require("./routes/instructor.routes"));
+//leads to api files
+app.use("/api/student", require("./api/student.api"));
+app.use("/api/instructor", require("./api/instructor.api"))
 
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
