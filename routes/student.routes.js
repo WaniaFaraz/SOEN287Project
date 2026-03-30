@@ -6,7 +6,7 @@
 const express = require("express"); //for css and js files
 const router = express.Router();
 const dir = __dirname.slice(0,-7); //remove the "/routes" part from the directory. (Since using ../ causes a "forbidden" message to appear)
-//Student routes
+//Student routes : all urls starting with "/student"
 //STUDENT SIGN IN
 router.get("/sign-in", (request, response) => {
     response.sendFile(dir + "/html/SignIn.html");

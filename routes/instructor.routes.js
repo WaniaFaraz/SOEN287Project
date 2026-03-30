@@ -6,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 const dir = __dirname;
 
-//INSTRUCTOR ROUTES
+//INSTRUCTOR ROUTES : all urls starting with "/instructor"
 //INSTRUCTOR SIGN-IN
 router.get("/sign-in", (request, response) => {
     response.sendFile(dir + "/html/SignIn.html");
