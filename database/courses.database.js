@@ -1,4 +1,6 @@
 //See student.database or instructor.database for details
+// INSTRUCTIONS TO GET DATABASE: see student.database.js
+
 //Queries the database for data related to courses
 
 

@@ -8,7 +8,8 @@
 //  Open the xampp control panel and start apache and mySQL
 //  Go to the browser and type: "localhost" - this should lead to the xampp dashboard
 //  Click on phpmyadmin
-//  **INSTRUCTIONS TO GET DATABASE COMING SOON**
+
+// INSTRUCTIONS TO GET DATABASE: see student.database.js
 
 //QUERY FUNCTIONS
 //  Most of the querying functions required can be found here

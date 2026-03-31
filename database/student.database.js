@@ -8,7 +8,12 @@
 //  Open the xampp control panel and start apache and mySQL
 //  Go to the browser and type: "localhost" - this should lead to the xampp dashboard
 //  Click on phpmyadmin
-//  **INSTRUCTIONS TO GET DATABASE COMING SOON**
+
+//INSTRUCTIONS TO GET DATABASE:
+//I will upload a .sql file to github
+//once you open phpMyAdmin in xampp, create a database and import the .sql file
+//Our databases will not be synced, we will each have a copy of the database and can add/delete data
+//**Do not change the structure of any tables so that our querying functions work correctly**
 
 //QUERY FUNCTIONS
 //  Most of the querying functions required can be found here
