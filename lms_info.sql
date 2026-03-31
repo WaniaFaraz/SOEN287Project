@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2026 at 08:52 PM
+-- Generation Time: Mar 31, 2026 at 10:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -21,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `lms_info`
 --
+CREATE DATABASE IF NOT EXISTS `lms_info` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `lms_info`;
 
 -- --------------------------------------------------------
 
@@ -256,12 +257,13 @@ INSERT INTO `students` (`studentId`, `firstName`, `lastName`, `emailAddress`, `p
 --
 -- Table structure for table `student_courses`
 --
--- Creation: Mar 31, 2026 at 04:44 PM
--- Last update: Mar 31, 2026 at 04:33 PM
+-- Creation: Mar 31, 2026 at 07:57 PM
+-- Last update: Mar 31, 2026 at 08:12 PM
 --
 
 CREATE TABLE `student_courses` (
   `studentId` int(11) NOT NULL,
+  `courseId` int(11) NOT NULL,
   `courseCode` varchar(8) NOT NULL,
   `courseSection` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Maps students to courses - makes sure that one student cannot be in more than one section of the same course';
@@ -269,10 +271,10 @@ CREATE TABLE `student_courses` (
 --
 -- RELATIONSHIPS FOR TABLE `student_courses`:
 --   `courseCode`
---       `courses` -> `Code`
+--       `courses` -> `code`
 --   `courseSection`
---       `courses` -> `Section`
---   `studentID`
+--       `courses` -> `section`
+--   `studentId`
 --       `students` -> `studentId`
 --
 
@@ -280,15 +282,53 @@ CREATE TABLE `student_courses` (
 -- Dumping data for table `student_courses`
 --
 
-INSERT INTO `student_courses` (`studentId`, `courseCode`, `courseSection`) VALUES
-(1000, 'COMP 232', 'S'),
-(1000, 'COMP 248', 'Y'),
-(1006, 'COMP 248', 'Y'),
-(1001, 'ENGR 201', 'S'),
-(1006, 'ENGR 201', 'S'),
-(1000, 'ENGR 213', 'Y'),
-(1006, 'SOEN 228', 'X'),
-(1006, 'SOEN 287', 'S');
+INSERT INTO `student_courses` (`studentId`, `courseId`, `courseCode`, `courseSection`) VALUES
+(1000, 1, 'COMP 232', 'S'),
+(1000, 4, 'COMP 248', 'Y'),
+(1000, 15, 'ENGR 213', 'Y'),
+(1001, 16, 'ENGR 201', 'S'),
+(1006, 4, 'COMP 248', 'Y'),
+(1006, 16, 'ENGR 201', 'S'),
+(1006, 10, 'SOEN 228', 'X'),
+(1006, 11, 'SOEN 287', 'S');
+
+--
+-- Triggers `student_courses`
+--
+DELIMITER $$
+CREATE TRIGGER `insertCourseIdFromCourseCodeAndSection` BEFORE INSERT ON `student_courses` FOR EACH ROW BEGIN
+    
+    DECLARE tempCourseId INT;
+    
+    
+    SELECT courseId INTO tempCourseId 
+    FROM courses 
+    WHERE courses.code = NEW.courseCode 
+      AND courses.section = NEW.courseSection
+    LIMIT 1;
+    
+    
+    SET NEW.courseId = tempCourseId;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `updateCourseIdFromCourseCodeAndSection` BEFORE UPDATE ON `student_courses` FOR EACH ROW BEGIN
+    
+    DECLARE tempCourseId INT;
+    
+    
+    SELECT courseId INTO tempCourseId 
+    FROM courses 
+    WHERE courses.code = NEW.courseCode 
+      AND courses.section = NEW.courseSection
+    LIMIT 1;
+    
+    
+    SET NEW.courseId = tempCourseId;
+END
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -333,7 +373,8 @@ ALTER TABLE `students`
 --
 ALTER TABLE `student_courses`
   ADD UNIQUE KEY `studentID` (`studentId`,`courseCode`),
-  ADD KEY `course` (`courseCode`,`courseSection`);
+  ADD KEY `course` (`courseCode`,`courseSection`),
+  ADD KEY `courseId` (`courseId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -373,8 +414,8 @@ ALTER TABLE `instructor_courses`
 -- Constraints for table `student_courses`
 --
 ALTER TABLE `student_courses`
-  ADD CONSTRAINT `course` FOREIGN KEY (`courseCode`,`courseSection`) REFERENCES `courses` (`Code`, `Section`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_of_course` FOREIGN KEY (`studentID`) REFERENCES `students` (`studentId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `course` FOREIGN KEY (`courseCode`,`courseSection`) REFERENCES `courses` (`code`, `section`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_of_course` FOREIGN KEY (`studentId`) REFERENCES `students` (`studentId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 
 --
@@ -416,7 +457,6 @@ INSERT INTO `pma__table_uiprefs` (`username`, `db_name`, `table_name`, `prefs`, 
 --
 -- Metadata for database lms_info
 --
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
