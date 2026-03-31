@@ -23,9 +23,9 @@ const PORT = 8080;
 app.use(express.static('public'));
 app.use("/student", require("./routes/student.routes"));
 app.use("/instructor", require("./routes/instructor.routes"));
-//leads to api files
-app.use("/api/student", require("./api/student.api"));
-app.use("/api/instructor", require("./api/instructor.api"))
+//leads to controller files
+app.use("/api/student", require("./controllers/student.controller"));
+app.use("/api/instructor", require("./controllers/instructor.controller"))
 
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
