@@ -30,24 +30,37 @@ const pool = mysql.createPool({
     database: "lms_info" //name of the database
 }).promise() //use pool whenever accessing the database
 
+let queryString;
+let rows;
+let instructors;
 
 //Get all instructors
 async function getInstructors() {
-    const [instructors] = await pool.query('SELECT * FROM `professors`');
+    [instructors] = await pool.query('SELECT * FROM `professors`');
     return instructors;
 }
 
 //Get instructors from id
 async function getInstructorById(id) {
-    const [rows] = await pool.query('SELECT * FROM `professors` WHERE `professorID` = ?', [id]);
+    [rows] = await pool.query('SELECT * FROM `professors` WHERE `professorID` = ?', [id]);
     return rows;
 }
 
 //add an instructor
 async function addInstructor(instructorId, firstName, lastName, emailAddress) {
-    const queryString = "INSERT INTO `professors` (`professorID`, `firstName`, `lastName`, `emailAddress`, `password`) VALUES (?, ?, ?, ?)";
+    queryString = "INSERT INTO `professors` (`professorID`, `firstName`, `lastName`, `emailAddress`, `password`) VALUES (?, ?, ?, ?)";
     await pool.query(queryString, [instructorId, firstName, lastName, emailAddress]);
     console.log("Instructor added with ID: ", professorID);
+}
+
+//Get all students for an instructor
+async function getStudentsOfInstructor(instructorId) {
+    //get courseIds of the courses taught by this instructor
+    queryString = "SELECT * FROM `instructor_courses` WHERE `instructorId` = ?";
+    [rows] = await pool.query(queryString, [instructorId]);
+    //rows: array of json objects that contains the instructorId and the courseId
+    //call function that gets the students of a course for each of the courseIds in the rows array
+    //??????????????????????????????????????????????????????????????
 }
 
 //Export all functions
