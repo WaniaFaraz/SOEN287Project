@@ -12,13 +12,19 @@ const express = require("express");
 const router = express.Router();
 
 //IMPORT DATABASE QUERY FUNCTIONS
+//STUDENT QUERY FUNCTIONS
 const {
     getStudents,
     getStudentById,
+    
+} = require("../database/student.database"); 
+//CERTAIN COURSE QUERY FUNCTIONS
+const {
     getCoursesOfStudent,
     getCourseFromCode,
-} = require("../database"); //import querying functions from the database file
+} = require("../database/courses.database"); 
 
+//ROUTES TO DEAL WITH DATA REQUESTS FROM SCRIPTS FILES - SEND AND RECEIVE DATA TO AND FROM HTML
 //GET ALL STUDENTS - RETURNS AN ARRAY OF STUDENT JSON OBJECTS
 router.get('/get-students', async (request, response) => {
     const students = await getStudents();
@@ -49,4 +55,5 @@ router.get('/get-course-from-code/:coursecode', async (request, response) => {
     response.json(course);
 })
 
+//Export the router object
 module.exports = router;

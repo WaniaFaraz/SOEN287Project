@@ -10,12 +10,21 @@
 const express = require("express");
 const router = express.Router();
 
-//GET ALL INSTRUCTORS
+//IMPORT QUERY FUNCTIONS
+//INSTRUCTOR DATA QUERY FUNCTIONS
 const {
     getInstructors,
     getInstructorById,
     getCoursesOfInstructor
-    } = require("../database");
+} = require("../database/instructor.database");
+//CERTAIN COURSE DATA QUERY FUNCTIONS
+const {
+    getCoursesOfInstructor
+} = require("../database/courses.database");
+
+
+//Routes that process data requests from scripts files - send data to html and receive data from html
+//GET ALL INSTRUCTORS
 router.get('/get-instructors', async (request, response) => {
     const instructors = await getInstructors();
     response.json(instructors);
@@ -26,7 +35,7 @@ router.get('/get-instructors/:id', async (request, response) => {
     response.json(instructor);
 })
 
-//ADD AN INSTRUCTOR
+//ADD AN INSTRUCTOR - USE MULTER
 //add code here for adding instructors after collecting the account info
 //note: there is an addInstructor(id, firstName, lastName, emailAddress) function
 //      in the database file that will add the student to the database that can be used

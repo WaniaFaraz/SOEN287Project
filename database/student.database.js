@@ -1,5 +1,5 @@
 //GOAL OF FILE:
-//  Contains all the functions to retrieve data from and store data in the database
+//  Contains all the functions to retrieve data from and store data in the database related to students
 //  (In other words: this file contains the functions that query the database)
 
 //INSTRUCTIONS TO USE DATABASE
@@ -50,58 +50,10 @@ async function addStudent(studentID, firstName, lastName, emailAddress) {
     console.log("Student added with ID: ", studentID);
 }
 
-
-//Get all instructors
-async function getInstructors() {
-    const [instructors] = await pool.query('SELECT * FROM `professors`');
-    return instructors;
-}
-
-//Get instructors from id
-async function getInstructorById(id) {
-    const [rows] = await pool.query('SELECT * FROM `professors` WHERE `professorID` = ?', [id]);
-    return rows;
-}
-
-async function addInstructor(instructorId, firstName, lastName, emailAddress) {
-    const queryString = "INSERT INTO `professors` (`professorID`, `firstName`, `lastName`, `emailAddress`, `password`) VALUES (?, ?, ?, ?)";
-    await pool.query(queryString, [instructorId, firstName, lastName, emailAddress]);
-    console.log("Instructor added with ID: ", professorID);
-}
-
-//Get courses of a specific instructor
-async function getCoursesOfInstructor(instructorId) {
-    const queryString = "SELECT * FROM `courses` WHERE `Code` = ?"; //TO BE EDITED
-}
-
-
-//Get courses of a specific student
-async function getCoursesOfStudent(studentid) {
-    const queryString = "SELECT * FROM `student_courses` WHERE `studentID` = ?";
-    const [rows] = await pool.query(queryString, [studentid]);
-    return rows;
-}
-//Get course name from the course code
-async function getCourseFromCode(courseCode) {
-    const queryString = "SELECT * FROM `courses` WHERE `Code` = ?";
-    const fixedCode = courseCode.slice(0,4) + " " + courseCode.slice(4); //add back the whitespace that was removed in the scripts file
-    const [rows] = await pool.query(queryString, [fixedCode]);
-    if(rows && rows.length > 0) {
-        return rows[0];
-    }
-    else {
-        console.log("Course not found");
-    }
-}
-
+//Export all functions
 module.exports = { 
     getStudents,
     getStudentById,
     addStudent,
-    addInstructor,
-    getInstructors,
-    getInstructorById,
-    getCoursesOfStudent,
-    getCourseFromCode
+    
 };
-
