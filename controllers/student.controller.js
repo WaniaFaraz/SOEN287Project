@@ -23,6 +23,7 @@ const {
 const {
     getCoursesOfStudent,
     getCourseFromCode,
+    getCourseFromId
 } = require("../database/courses.database"); 
 //GRADES QUERY FUNCTIONS
 const {
@@ -60,6 +61,13 @@ router.get('/get-courses/:studentid', async (request, response) => {
     const studentid = request.params.studentid;
     const courses = await getCoursesOfStudent(studentid);
     response.json(courses);
+})
+
+//GET COURSE FROM COURSE_ID
+router.get('/get-course-from-courseId/:courseId', async (request, response) => {
+    const courseId = request.params.courseId;
+    const course = await getCourseFromId(courseId);
+    response.json(course);
 })
 
 //GET COURSE NAME FROM COURSE CODE
