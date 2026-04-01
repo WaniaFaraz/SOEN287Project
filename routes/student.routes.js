@@ -22,9 +22,14 @@ router.get("/home", (request, response) => {
 })
 
 //HOME PAGE POST redirect
+router.post("/home/", (request, response) => {
+    response.redirect(303, "/student/home");
+})
+
 router.post("/home", (request, response) => {
     response.redirect(303, "/student/home");
 })
+
 //COURSE HOME PAGE
 router.get("/course-page", (request, response) => {
     response.sendFile(dir + "/html/student_course_page.html");

@@ -15,11 +15,23 @@ const router = express.Router();
 const {
     getInstructors,
     getInstructorById,
+    getInstructorByEmail,
+    addInstructor,
+    getStudentsOfInstructor,
 } = require("../database/instructor.database");
 //CERTAIN COURSE DATA QUERY FUNCTIONS
 const {
-    getCoursesOfInstructor
+    getCoursesOfInstructor,
+    getAllCourses,
 } = require("../database/courses.database");
+
+const {
+    getAssignmentsOfInstructor,
+    getAssignmentsOfCourse,
+    addAssignment,
+    deleteAssignment,
+    updateAssignment,
+} = require("../database/assignments.database");
 
 
 //Routes that process data requests from scripts files - send data to html and receive data from html

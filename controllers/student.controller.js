@@ -16,27 +16,26 @@ const router = express.Router();
 const {
     getStudents,
     getStudentById,
-    getStudentByEmail
+    getStudentByEmail,
+    addStudent,
+    updateStudentInfo,
+    updateStudentPassword
     
 } = require("../database/student.database"); 
 //CERTAIN COURSE QUERY FUNCTIONS
 const {
     getCoursesOfStudent,
     getCourseFromCode,
-    getCourseFromId
 } = require("../database/courses.database"); 
 //GRADES QUERY FUNCTIONS
 const {
     getGradesOfStudent,
-    updateCompleted,
-    deleteStudentAssignment
     
 } = require("../database/grades.database"); 
 //ASSIGNMENT QUERY FUNCTIONS
 const {
      getAllAssignmentsOfStudent
 } = require("../database/assignments.database");
-
 
 
 //ROUTES TO DEAL WITH DATA REQUESTS FROM SCRIPTS FILES - SEND AND RECEIVE DATA TO AND FROM HTML
@@ -81,54 +80,53 @@ router.get('/get-course-from-code/:coursecode', async (request, response) => {
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password)
-        return res.status(400).json({ success: false, message: "Email and password are required." });
+        return res.redirect('/student/sign-in?error=missing');
     const students = await getStudentByEmail(email);
     if (students.length === 0)
-        return res.status(401).json({ success: false, message: "No account found with that email." });
+        return res.redirect('/student/sign-in?error=notfound');
     if (students[0].password !== password)
-        return res.status(401).json({ success: false, message: "Incorrect password." });
+        return res.redirect('/student/sign-in?error=wrongpassword');
     req.session.userId = students[0].studentId;
     req.session.userType = "student";
     req.session.firstName = students[0].firstName;
-    //res.json({ success: true, studentId: students[0].studentId, firstName: students[0].firstName });
-    res.redirect("/student/home/"); //once signed in, lead to the home page
+    res.redirect(303, "/student/home");
 });
 
 //STUDENT SIGN UP
 router.post('/sign-up', async (req, res) => {
-    const { studentID, firstName, lastName, emailAddress, password } = req.body;
+    const { studentID, firstName, lastName, emailAddress, password, confirmPassword } = req.body;
     if (!studentID || !firstName || !lastName || !emailAddress || !password)
-        return res.status(400).json({ success: false, message: "All fields are required." });
+        return res.redirect('/student/create-account?error=missing');
+    if (password !== confirmPassword)
+        return res.redirect('/student/create-account?error=passwordmismatch');
     const existing = await getStudentByEmail(emailAddress);
     if (existing.length > 0)
-        return res.status(409).json({ success: false, message: "An account with that email already exists." });
+        return res.redirect('/student/create-account?error=exists');
     await addStudent(studentID, firstName, lastName, emailAddress, password);
-    res.json({ success: true, message: "Account created successfully." });
+    res.redirect(303, "/student/sign-in?success=created");
 });
 
 //STUDENT LOGOUT
 router.post('/logout', (req, res) => {
     req.session.destroy();
-    res.json({ success: true });
+    res.redirect(303, "/student/sign-in");
 });
-//UPDATE STUDENT INFO
-router.put('/update-info', async (req, res) => {
+
+//UPDATE PERSONAL INFO
+router.post('/update-info', async (req, res) => {
     const { userId, firstName, lastName, emailAddress } = req.body;
-    if (!userId || !firstName || !lastName || !emailAddress)
-        return res.status(400).json({ success: false, message: "All fields are required." });
     await updateStudentInfo(userId, firstName, lastName, emailAddress);
-    res.json({ success: true });
+    res.redirect(303, "/student/account-settings?success=saved");
 });
+
 //UPDATE PASSWORD
-router.put('/update-password', async (req, res) => {
+router.post('/update-password', async (req, res) => {
     const { userId, currentPassword, newPassword } = req.body;
     const students = await getStudentById(userId);
-    if (students.length === 0)
-        return res.status(404).json({ success: false, message: "Student not found." });
     if (students[0].password !== currentPassword)
-        return res.status(401).json({ success: false, message: "Current password is incorrect." });
+        return res.redirect('/student/account-settings?error=wrongpassword');
     await updateStudentPassword(userId, newPassword);
-    res.json({ success: true });
+    res.redirect(303, "/student/account-settings?success=passwordupdated");
 });
 
 //GET ALL GRADES OF A STUDENT (for averages)
