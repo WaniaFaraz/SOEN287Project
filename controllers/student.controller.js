@@ -116,7 +116,7 @@ router.post('/logout', (req, res) => {
 router.post('/update-info', async (req, res) => {
     const { userId, firstName, lastName, emailAddress } = req.body;
     await updateStudentInfo(userId, firstName, lastName, emailAddress);
-    res.redirect(303, "/student/account-settings?success=saved");
+    res.json({ success: true });
 });
 
 //UPDATE PASSWORD
@@ -124,9 +124,9 @@ router.post('/update-password', async (req, res) => {
     const { userId, currentPassword, newPassword } = req.body;
     const students = await getStudentById(userId);
     if (students[0].password !== currentPassword)
-        return res.redirect('/student/account-settings?error=wrongpassword');
+        return res.json({ success: false, message: "Current password is incorrect." });
     await updateStudentPassword(userId, newPassword);
-    res.redirect(303, "/student/account-settings?success=passwordupdated");
+    res.json({ success: true });
 });
 
 //GET ALL GRADES OF A STUDENT (for averages)

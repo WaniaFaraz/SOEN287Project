@@ -111,7 +111,7 @@
         currentUserId = session.userId;
 
         const url = userType === "student"
-            ? `/api/student/get-student/${currentUserId}`
+            ? `/api/student/get-students/${currentUserId}`
             : `/api/instructor/get-instructor/${currentUserId}`;
 
         const res = await fetch(url);
@@ -142,12 +142,8 @@
             return;
         }
 
-        const url = userType === "student"
-            ? `/api/student/update-info`
-            : `/api/instructor/update-info`;
-
-        const res = await fetch(url, {
-            method: "PUT",
+        const res = await fetch("/api/student/update-info", {
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: currentUserId, firstName, lastName, emailAddress })
         });
@@ -158,6 +154,7 @@
         } else {
             errorMsg.textContent = result.message || "Error saving changes.";
             errorMsg.style.display = "block";
+             document.getElementById("username").textContent = firstName + " " + lastName;
         }
     });
 
@@ -182,12 +179,8 @@
             return;
         }
 
-        const url = userType === "student"
-            ? `/api/student/update-password`
-            : `/api/instructor/update-password`;
-
-        const res = await fetch(url, {
-            method: "PUT",
+        const res = await fetch("/api/student/update-password", {
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: currentUserId, currentPassword, newPassword })
         });
