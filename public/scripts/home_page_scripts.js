@@ -4,12 +4,8 @@ document.addEventListener('DOMContentLoaded', getSession); //do loadHomePage whe
 let userId;
 
 async function getSession() {
-    const response = await fetch('/api/student/user-data');
+    const response = await fetch('/api/student/session');
     const session = await response.json();
-    if (!session.loggedIn) {
-        window.location.href = '/student/sign-in'; // redirect if not logged in
-        return;
-    }
     userId = session.userId;
     await loadHomePage();
 }
