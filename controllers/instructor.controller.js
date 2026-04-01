@@ -58,4 +58,35 @@ router.get('/get-courses/:instructorid', async (request, response) => {
     response.json(courses);
 })
 
+//INSTRUCTOR LOGIN
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password)
+        return res.redirect('/instructor/sign-in?error=missing');
+    const instructors = await getInstructorByEmail(email);
+    if (instructors.length === 0)
+        return res.redirect('/instructor/sign-in?error=notfound');
+    if (instructors[0].password !== password)
+        return res.redirect('/instructor/sign-in?error=wrongpassword');
+    req.session.userId = instructors[0].instructorId;
+    req.session.userType = "instructor";
+    req.session.firstName = instructors[0].firstName;
+    res.redirect(303, "/instructor/home");
+});
+
+//INSTRUCTOR LOGOUT
+router.post('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect(303, "/instructor/sign-in");
+});
+
+//GET SESSION INFO
+router.get('/session', (req, res) => {
+    if (req.session.userId && req.session.userType === "instructor")
+        res.json({ loggedIn: true, userId: req.session.userId, firstName: req.session.firstName });
+    else
+        res.json({ loggedIn: false });
+});
+
+
 module.exports = router;

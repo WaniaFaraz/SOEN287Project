@@ -19,11 +19,6 @@ const dir = __dirname;
 const session = require("express-session");
 const PORT = 8080;
 
-// CSP - must be first
-app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self' 'unsafe-inline' 'unsafe-eval'");
-    next();
-});
 
 // middlewares
 app.use(express.json());

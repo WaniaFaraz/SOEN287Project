@@ -41,23 +41,29 @@ const {
 
 //Get all instructors
 async function getInstructors() {
-    [instructors] = await pool.query('SELECT * FROM `professors`');
+    [instructors] = await pool.query('SELECT * FROM `instructors`');
     return instructors;
     //rows: array of JSON objects containing instructorId, firstName, lastName, emailAddress, password
 }
 
+//Get instructor by email (for login)
+async function getInstructorByEmail(email) {
+    [rows] = await pool.query('SELECT * FROM `instructors` WHERE `emailAddress` = ?', [email]);
+    return rows;
+}
+
 //Get instructors from id
 async function getInstructorById(id) {
-    [rows] = await pool.query('SELECT * FROM `professors` WHERE `professorID` = ?', [id]);
+    [rows] = await pool.query('SELECT * FROM `instructors` WHERE `instructorId` = ?', [id]);
     return rows;
     //rows: array of JSON objects containing instructorId, firstName, lastName, emailAddress, password
 }
 
 //add an instructor
 async function addInstructor(instructorId, firstName, lastName, emailAddress) {
-    queryString = "INSERT INTO `professors` (`professorID`, `firstName`, `lastName`, `emailAddress`, `password`) VALUES (?, ?, ?, ?)";
+    queryString = "INSERT INTO `instructors` (`instructorId`, `firstName`, `lastName`, `emailAddress`, `password`) VALUES (?, ?, ?, ?)";
     await pool.query(queryString, [instructorId, firstName, lastName, emailAddress]);
-    console.log("Instructor added with ID: ", professorID);
+    console.log("Instructor added with ID: ", instructorId);
 }
 
 //Get all students for an instructor
@@ -82,6 +88,7 @@ module.exports = {
     getInstructors,
     getInstructorById,
     addInstructor,
-    getStudentsOfInstructor
+    getStudentsOfInstructor,
+    getInstructorByEmail
 };
 
