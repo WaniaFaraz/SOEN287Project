@@ -23,11 +23,19 @@ const session = require("express-session");
 const PORT = 8080;
 
 // middlewares
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// session setup - before routes so that it is created/used everytime
+app.use(session({
+    secret: "soen287_secret_key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 } //1 day
+}));
 
 //all routes -- leads to routes file
-app.use(express.static('public'));
+
 app.use("/student", require("./routes/student.routes"));
 app.use("/instructor", require("./routes/instructor.routes"));
 //leads to controller files
@@ -38,13 +46,7 @@ app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
 })
 
-// session setup
-app.use(session({
-    secret: "soen287_secret_key",
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 }
-}));
+
 
 
 
