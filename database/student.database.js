@@ -42,7 +42,7 @@ async function getStudentById(id) {
 async function getStudentByEmail(email) {
     const [rows] = await pool.query('SELECT * FROM `students` WHERE `emailAddress` = ?', [email]);
     return rows;
-
+}
 //add a student
 async function addStudent(studentID, firstName, lastName, emailAddress) {
     const queryString = "INSERT INTO `students` (`studentID`, `firstName`, `lastName`, `emailAddress`, `password`) VALUES (?, ?, ?, ?)";
