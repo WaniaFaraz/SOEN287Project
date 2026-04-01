@@ -126,7 +126,31 @@ router.get('/session', (req, res) => {
         res.json({ loggedIn: false });
 });
 
+const { getAllAssignmentsOfStudent } = require("../database/assignments.database");
+const { updateCompleted } = require("../database/grades.database");
 
+//GET ALL ASSIGNMENTS OF A STUDENT
+//Returns an array of objects containing studentId, assignmentId, courseId, grade, completed status
+router.get('/get-assignments/:studentId', async (req, res) => {
+    try {
+        const assignments = await getAllAssignmentsOfStudent(req.params.studentId);
+        res.json(assignments);
+    } catch (error) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+//UPDATE COMPLETED STATUS OF AN ASSIGNMENT
+//It requires studentId, assignmentId, completed (boolean value) in the request body
+router.put('/update-completed', async (req, res) => {
+    try {
+        const { studentId, assignmentId, completed } = req.body;
+        await updateCompleted(studentId, assignmentId, completed);
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
 
 //Export the router object
 module.exports = router;

@@ -38,10 +38,18 @@ async function getAveragesOfStudent(studentId) {
     );
     return rows;
 }
+//Mark assignments as completed/pending
+async function updateCompleted(studentId, assignmentId, completed) {
+    await pool.query(
+        "UPDATE `student_assignments` SET `completed` = ? WHERE `studentId` = ? AND `assignmentId` = ?",
+        [completed, studentId, assignmentId]
+    );
+}
 
 module.exports = {
     getGradesOfStudent,
     addGrade,
     updateGrade,
     getAveragesOfStudent,
+    updateCompleted
 };
