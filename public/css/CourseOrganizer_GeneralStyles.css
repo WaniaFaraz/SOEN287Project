@@ -33,6 +33,10 @@ a {
     color : inherit;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* header */
 
 
@@ -496,4 +500,6 @@ a {
 .course-img-21 {
     background-image: url('/course-images/IMG-20260215-WA0025.jpg');
 }
+
+
 
