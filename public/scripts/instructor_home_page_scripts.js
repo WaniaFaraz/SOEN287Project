@@ -35,14 +35,9 @@ async function loadHomePage() {
         const title = course.title;
         const code = course.code;
         const section = course.section;
-<<<<<<< Updated upstream
         await addCourseToHomePage(code, title, section, courseId);
     })
-=======
-        await addCourseToHomePage(code, title, section);
-    }))
->>>>>>> Stashed changes
-}
+)}
     
 
 
@@ -51,14 +46,9 @@ async function addCourseToHomePage(code, title, section, courseId) {
     const courseArea = document.getElementById("course-area");
     courseArea.innerHTML += `<div class="course">
                                 <div class="course-image course-img-1"></div>
-<<<<<<< Updated upstream
-                                <a class="course-info-text" href="course-page?courseId=${courseId}">
-                                    <p class="course-code">${code}</p>
-=======
                                 <div class="course-info-text-area" >
                                     <p class="course-code">${code}<button type="button" class="edit-course-3-dots"></button></p>
                                     <a class ="course-info-text-a" href="course-page">
->>>>>>> Stashed changes
                                     <p class="course-name">${title}</p>
                                     <p class="course-section">Section ${section}</p>
                                     </a>
