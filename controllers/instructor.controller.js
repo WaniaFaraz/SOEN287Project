@@ -18,11 +18,14 @@ const {
     getInstructorByEmail,
     addInstructor,
     getStudentsOfInstructor,
+    instructorAddCourse
 } = require("../database/instructor.database");
 //CERTAIN COURSE DATA QUERY FUNCTIONS
 const {
     getCoursesOfInstructor,
     getAllCourses,
+    getSectionsOfCourse,
+    createCourse
 } = require("../database/courses.database");
 
 const {
@@ -88,5 +91,29 @@ router.get('/session', (req, res) => {
         res.json({ loggedIn: false });
 });
 
+//INSTRUCTOR ADD COURSE ---UNFINISHED
+router.post('/add-course', async (request, response) => {
+    //add course to instructor in database instructor_courses
+    console.log(request.body);
+    //const instructorId = session.userId;
+    const courseCode = request.body.code;
+    const courseSection = request.body.section;
+    const courseTitle = request.body.title;
+    const coursebg = request.body.bg;
+    const instructorId = request.session.userId;
+    console.log("instructorid:",instructorId);
+    await createCourse(courseCode, courseSection, courseTitle, instructorId);
+    console.log("courseCode", courseCode);
+    response.redirect("/instructor/home");
+
+})
+
+//GET THE SECTIONS OF A COURSE BASED ON COURSE CODE
+router.get('/get-sections-from-course-code/:courseCode', async(request, response) => {
+    const courseCode = request.params.courseCode;
+    const sections = await getSectionsOfCourse(courseCode);
+    console.log("sections from controller file:", sections);
+    response.json(sections);
+})
 
 module.exports = router;
