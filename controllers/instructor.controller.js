@@ -121,4 +121,15 @@ router.get('/get-sections-from-course-code/:courseCode', async(request, response
     response.json(sections);
 })
 
+//GET ALL ASSIGNMENTS OF A COURSE 
+router.get('/get-assignments/:courseId', async (req, res) => {
+    try {
+        const assignments = await getAssignmentsOfCourse(req.params.courseId);
+        res.json(assignments);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
 module.exports = router;

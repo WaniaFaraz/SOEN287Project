@@ -42,8 +42,45 @@ async function getAllAssignmentsFromCourseId(courseId) {
     return rows;
 }
 
+// Get all assignments of an instructor 
+async function getAssignmentsOfInstructor(instructorId) {
+    queryString = "SELECT * FROM `assignments` WHERE `instructorId` = ?";
+    [rows] = await pool.query(queryString, [instructorId]);
+    return rows;
+}
+
+// Get assignments of a course 
+async function getAssignmentsOfCourse(courseId) {
+    queryString = "SELECT * FROM `assignments` WHERE `courseId` = ?";
+    [rows] = await pool.query(queryString, [courseId]);
+    return rows;
+}
+
+// Add an assignment 
+async function addAssignment(instructorId, courseId, title, description, weight, dueDate) {
+    queryString = "INSERT INTO `assignments` (`instructorId`, `courseId`, `title`, `description`, `weight`, `dueDate`) VALUES (?, ?, ?, ?, ?, ?)";
+    await pool.query(queryString, [instructorId, courseId, title, description, weight, dueDate]);
+}
+
+// Delete an assignment 
+async function deleteAssignment(assignmentId) {
+    queryString = "DELETE FROM `assignments` WHERE `assignmentId` = ?";
+    await pool.query(queryString, [assignmentId]);
+}
+
+// Update an assignment 
+async function updateAssignment(assignmentId, title, description, weight, dueDate) {
+    queryString = "UPDATE `assignments` SET `title` = ?, `description` = ?, `weight` = ?, `dueDate` = ? WHERE `assignmentId` = ?";
+    await pool.query(queryString, [title, description, weight, dueDate, assignmentId]);
+}
+
 module.exports = {
     getAllAssignments,
     getAllAssignmentsOfStudent,
-    getAllAssignmentsFromCourseId
+    getAllAssignmentsFromCourseId,
+    getAssignmentsOfInstructor,
+    getAssignmentsOfCourse,
+    addAssignment,
+    deleteAssignment,
+    updateAssignment
 };

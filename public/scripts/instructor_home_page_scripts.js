@@ -32,18 +32,18 @@ async function loadHomePage() {
         const title = course.title;
         const code = course.code;
         const section = course.section;
-        await addCourseToHomePage(code, title, section);
+        await addCourseToHomePage(code, title, section, courseId);
     })
 }
     
 
 
 //funtion to add course to home page
-async function addCourseToHomePage(code, title, section) {
+async function addCourseToHomePage(code, title, section, courseId) {
     const courseArea = document.getElementById("course-area");
     courseArea.innerHTML += `<div class="course">
                                 <div class="course-image course-img-1"></div>
-                                <a class="course-info-text" href="course-page">
+                                <a class="course-info-text" href="course-page?courseId=${courseId}">
                                     <p class="course-code">${code}</p>
                                     <p class="course-name">${title}</p>
                                     <p class="course-section">Section ${section}</p>
