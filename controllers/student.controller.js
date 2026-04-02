@@ -31,8 +31,9 @@ const {
 //GRADES QUERY FUNCTIONS
 const {
     getGradesOfStudent,
-    
-} = require("../database/grades.database"); 
+    updateCompleted,
+    deleteStudentAssignment
+} = require("../database/grades.database");
 //ASSIGNMENT QUERY FUNCTIONS
 const {
      getAllAssignmentsOfStudent
@@ -137,7 +138,7 @@ router.get('/get-grades/:studentid', async (req, res) => {
         res.json(grades);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Server error" });
+        res.status(200).json([]);
     }
 });
 //GET SESSION INFO
