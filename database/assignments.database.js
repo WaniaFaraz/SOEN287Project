@@ -24,9 +24,11 @@ async function getAllAssignments() {
 async function getAllAssignmentsOfStudent(studentId) {
     queryString = `
         SELECT sa.studentId, sa.assignmentId, sa.courseId, sa.grade, sa.completed,
-               a.title, a.description, a.weight, a.dueDate
+               a.title, a.description, a.weight, a.dueDate,
+               c.code, c.section
         FROM student_assignments sa
         JOIN assignments a ON sa.assignmentId = a.assignmentId
+        JOIN courses c ON sa.courseId = c.courseId
         WHERE sa.studentId = ?
     `;
     [rows] = await pool.query(queryString, [studentId]);
