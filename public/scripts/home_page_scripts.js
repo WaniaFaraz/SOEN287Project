@@ -3,6 +3,7 @@ console.log('scripts loaded');
 document.addEventListener('DOMContentLoaded', getSession); //do getSession when the document loads
 let userId;
 
+
 async function getSession() {
     const response = await fetch('/api/student/session');
     const session = await response.json();
@@ -25,7 +26,7 @@ async function loadCourses() {
     await coursesOfStudent.forEach( async (value, index, array) => {
         //FIX THIS - DATABASE HAS BEEN UPDATED - USE COURSE ID TO GET COURSES!!!!!!!!
         const courseId = value.courseId;
-        const url = `http://localhost:${PORT}/api/student/get-course-from-courseId/${courseId}`;
+        const url = `/api/student/get-course-from-courseId/${courseId}`;
         const response = await fetch(url);
         const course = await response.json(); //course from courses table
         const code = course[0].code;
