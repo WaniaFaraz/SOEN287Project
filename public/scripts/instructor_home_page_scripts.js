@@ -6,7 +6,7 @@ console.log("reached scripts");
 
 let userId;
 
-let instructorFinalCoursesArray = []; //array of instructor courses
+let instructorFinalCoursesArray; //array of instructor courses
 
 //get instructorId
 async function getSession() {
@@ -117,19 +117,17 @@ async function generateSectionsDropDown(sections, element) {
 //EDIT COURSES MODAL
 const editCoursesAnchor = document.getElementById("edit-courses-icon-anchor");
 const EditOrDeletePopUp = document.getElementById("edit-or-delete-pop-up");
-editCoursesAnchor.addEventListener("mouseenter", async ()=> {
+editCoursesAnchor.addEventListener("click", async ()=> {
     await createEditCourseList();
-    EditOrDeletePopUp.showModal();
+    EditOrDeletePopUp.show();
 })
 
 EditOrDeletePopUp.addEventListener("mouseenter", async () => {
     await createEditCourseList();
-    EditOrDeletePopUp.showModal();
+    EditOrDeletePopUp.show();
 })
 
-editCoursesAnchor.addEventListener("mouseleave", async () => {
-    EditOrDeletePopUp.close();
-})
+
 
 //Generate the list of courses to put in the pop-up when the pop up is hovered
 async function createEditCourseList() {
@@ -140,13 +138,27 @@ async function createEditCourseList() {
             const code = value.code;
             const section = value.section;
             const courseId = value.courseId;
-            editCoursesList.innerHTML += `<ul><button value=${courseId} id="edit-course-button-option">${code} - ${section}</button></ul>`
+            editCoursesList.innerHTML += `<ul><button class="edit-specific-course-button" value=${courseId} id="edit-course-button-option-${index}">${code} - ${section}</button></ul>`
 
         }) )
 
+        const arrayOfEditCourseButtons = document.getElementsByClassName("edit-specific-course-button");
 
-    
+        Array.from(arrayOfEditCourseButtons).forEach( async (value, index, array) => {
+            value.addEventListener("click", async (event)=> {
+                const courseIdToEdit = event.target.value;
+                console.log("courseIdtoEdit:",courseIdToEdit);
+            })
+        });
+   
 }
+
+
+
+
+
+
+
 
 
 
@@ -187,8 +199,3 @@ async function generateSectionsDropDown(sections, element) {
     })
 }
 */
-
-
-
-
-

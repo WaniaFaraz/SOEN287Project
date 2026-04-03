@@ -31,7 +31,6 @@ async function getAllCourses() {
 async function getCourseFromId(courseId) {
     queryString = "SELECT * FROM `courses` WHERE `courseId` = ?";
     [rows] = await pool.query(queryString, [courseId]);
-    console.log("course from query",rows)
     return rows;
     //rows: an array of json objects containing courseId, title, code, section, visibility
 }
