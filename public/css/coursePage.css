@@ -383,3 +383,43 @@ button {
   .app { grid-template-columns: 1fr; }
   .sidebar { display: none; } 
 }
+
+.donut-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1cm;
+}
+
+.donut-chart {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#ffb948 0%, #e0e0e0 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s ease;
+}
+
+.donut-hole {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donut-percent {
+    font-size: 20pt;
+    font-weight: bold;
+    color: #310047;
+}
+
+.donut-label {
+    margin-top: 0.3cm;
+    font-size: 12pt;
+    color: #444;
+}

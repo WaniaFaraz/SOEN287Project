@@ -32,6 +32,7 @@ async function loadAssignments() {
     const assignments = await response.json();
     displayAssignments(assignments);
     loadEnterMarks(assignments);
+    loadGradeBreakdown(assignments);
 }
 
 // DISPLAY ASSIGNMENTS IN THE TABLE
@@ -94,6 +95,19 @@ async function saveGrade(assignmentId, grade) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ assignmentId, grade })
     });
+}
+
+// LOAD GRADE BREAKDOWN 
+function loadGradeBreakdown(assignments) {
+    const completed = assignments.filter(a => a.completed && a.grade !== null);
+    
+    const avg = completed.length > 0 
+        ? Math.round(completed.reduce((sum, a) => sum + a.grade, 0) / completed.length)
+        : 0;
+
+    const circle = document.querySelector('.donut-chart');
+    circle.style.background = `conic-gradient(#ffb948 ${avg}%, #e0e0e0 ${avg}%)`;
+    document.querySelector('.donut-percent').textContent = avg + '%';
 }
 
 getSession();
