@@ -125,7 +125,8 @@ a {
 }
 
 .edit-or-delete-pop-up li ul button:hover {
-    background-color: var();
+    background-color: rgb(195, 182, 218);
+
 }
 .instructor-id {
     font-size: 14pt;
