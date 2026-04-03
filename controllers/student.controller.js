@@ -32,11 +32,13 @@ const {
 const {
     getGradesOfStudent,
     updateCompleted,
-    deleteStudentAssignment
+    deleteStudentAssignment,
+    updateGrade
 } = require("../database/grades.database");
 //ASSIGNMENT QUERY FUNCTIONS
 const {
-     getAllAssignmentsOfStudent
+     getAllAssignmentsOfStudent,
+     getAssignmentsOfStudentByCourse
 } = require("../database/assignments.database");
 
 
@@ -179,6 +181,31 @@ router.delete('/delete-assignment', async (req, res) => {
         await deleteStudentAssignment(studentId, assignmentId);
         res.json({ success: true });
     } catch (error) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+//GET ASSIGNMENTS OF A STUDENT FOR A SPECIFIC COURSE 
+router.get('/get-assignments-by-course/:courseId', async (req, res) => {
+    try {
+        const studentId = req.session.userId;
+        const assignments = await getAssignmentsOfStudentByCourse(studentId, req.params.courseId);
+        res.json(assignments);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+//UPDATE GRADE OF A STUDENT ASSIGNMENT 
+router.put('/update-grade', async (req, res) => {
+    try {
+        const studentId = req.session.userId;
+        const { assignmentId, grade } = req.body;
+        await updateGrade(studentId, assignmentId, grade);
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Server error" });
     }
 });

@@ -37,23 +37,21 @@ async function loadCourses() {
         const title = course.title;
         studentFinalCoursesArray.push(course);
         //insert data into html elements
-        await createCourse(code, section, title, index);      
+        await createCourse(code, section, title, index, courseId);    
     }))
 }
 
 
 //right now the function contains index - change to course backgroung image number
-async function createCourse(code, section, title, index) {
-    //adds a course to the course area
+async function createCourse(code, section, title, index, courseId) {
     const courseArea = await document.getElementById("course-area");
-        courseArea.innerHTML += `<div class="course">
-                                    <div class="course-image course-img-${index+1}"></div>
-                                    <a class="course-info-text" href="course-page">
-                                        <p class="course-code">${code}</p>
-                                        <p class="course-name">${title}</p>
-                                        <p class="course-section">Section ${section}</p>
-                                    </a>
-                                </div>`;
+    courseArea.innerHTML += `<div class="course">
+                                <div class="course-image course-img-${index+1}"></div>
+                                <a class="course-info-text" href="course-page?courseId=${courseId}">
+                                    <p class="course-code">${code}</p>
+                                    <p class="course-name">${title}</p>
+                                    <p class="course-section">Section ${section}</p>
+                                </a>
+                            </div>`;
 }
-
     
