@@ -39,24 +39,20 @@ async function loadCourses() {
         const code = course.code;
         const section = course.section;
         const title = course.title;
+        const coursebg = course.background;
         studentFinalCoursesArray.push(course);
         //insert data into html elements
-        await createCourse(code, section, title, index, courseId);
+        await createCourse(code, section, title, coursebg, courseId);
     }))
 }
 
 
 //right now the function contains index - change to course backgroung image number
-async function createCourse(code, section, title, index, courseId) {
+async function createCourse(code, section, title, coursebg, courseId) {
     const courseArea =  document.getElementById("course-area");
     courseArea.innerHTML += `<div class="course">
-<<<<<<< Updated upstream
-                                <div class="course-image course-img-${index + 1}"></div>
-                                <a class="course-info-text" href="course-page?courseId=${courseId}">
-=======
-                                <div class="course-image course-img-${index+1}"></div>
+                                <div class="course-image course-img-${coursebg}"></div>
                                 <a class="course-info-text" href='course-page?courseId=${courseId}'>
->>>>>>> Stashed changes
                                     <p class="course-code">${code}</p>
                                     <p class="course-name">${title}</p>
                                     <p class="course-section">Section ${section}</p>

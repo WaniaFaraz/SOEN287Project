@@ -27,11 +27,7 @@ async function getSession() {
     document.querySelector('.student-id').textContent = session.userId;
     loadAssignments();
     loadCourseName();
-<<<<<<< Updated upstream
-
-=======
     loadCalendar();
->>>>>>> Stashed changes
     // Set course structure link with courseId
     const structureBtn = document.querySelector('a[href="course-templates"]');
     if (structureBtn) structureBtn.href = `course-templates?courseId=${courseId}`;
