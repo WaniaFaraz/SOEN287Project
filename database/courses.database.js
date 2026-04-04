@@ -12,8 +12,8 @@ const pool = mysql.createPool({
     database: "lms_info" //name of the database
 }).promise() //use pool.query() whenever accessing the database
 
-let queryString;
-let rows;
+
+
 
 //import certain functions
 const {
@@ -22,23 +22,23 @@ const {
 
 //Get all courses
 async function getAllCourses() {
-    queryString = "SELECT * FROM `courses`";
-    [rows] = await pool.query(queryString);
+    const queryString = "SELECT * FROM `courses`";
+    const [rows] = await pool.query(queryString);
     //rows: array of json objects containing courseId, title, code, section, visibility
 }
 
 //Get course from courseId
 async function getCourseFromId(courseId) {
-    queryString = "SELECT * FROM `courses` WHERE `courseId` = ?";
-    [rows] = await pool.query(queryString, [courseId]);
+    const queryString = "SELECT * FROM `courses` WHERE `courseId` = ?";
+    const [rows] = await pool.query(queryString, [courseId]);
     return rows;
     //rows: an array of json objects containing courseId, title, code, section, visibility
 }
 
 //Get courses of a specific instructor
 async function getCoursesOfInstructor(instructorId) {
-    queryString = "SELECT * FROM `instructor_courses` WHERE `instructorId` = ?";
-    [rows] = await pool.query(queryString, [instructorId]);
+    const queryString = "SELECT * FROM `instructor_courses` WHERE `instructorId` = ?";
+    const [rows] = await pool.query(queryString, [instructorId]);
     return rows;
     //rows: array of json objects containing the instructorId and courseId
 }
@@ -46,17 +46,17 @@ async function getCoursesOfInstructor(instructorId) {
 
 //Get courses of a specific student
 async function getCoursesOfStudent(studentid) {
-    queryString = "SELECT * FROM `student_courses` WHERE `studentID` = ?";
-    [rows] = await pool.query(queryString, [studentid]);
+    const queryString = "SELECT * FROM `student_courses` WHERE `studentID` = ?";
+    const [rows] = await pool.query(queryString, [studentid]);
     return rows;
     //rows: an array of json objects containing the studentId, courseCode, courseSection
 }
 
 //Get course name from the course code
 async function getCourseFromCode(courseCode) {
-    queryString = "SELECT * FROM `courses` WHERE `Code` = ?";
+    const queryString = "SELECT * FROM `courses` WHERE `Code` = ?";
     const fixedCode = courseCode.slice(0,4) + " " + courseCode.slice(4); //add back the whitespace that was removed in the scripts file
-    [rows] = await pool.query(queryString, [fixedCode]);
+    const [rows] = await pool.query(queryString, [fixedCode]);
     if(rows && rows.length > 0) {
         return rows[0];
         //rows: an array of json objects containing courseId, title, code, section, visibility
@@ -68,8 +68,8 @@ async function getCourseFromCode(courseCode) {
 
 //Get all students of a course (based on courseId)
 async function getStudentsOfCourse(courseId) {
-    queryString = "SELECT * FROM `student_courses` WHERE `courseId` = ?";
-    [rows] = await pool.query(queryString, [courseId]);
+    const queryString = "SELECT * FROM `student_courses` WHERE `courseId` = ?";
+    const [rows] = await pool.query(queryString, [courseId]);
     return rows;
     //rows: array of json objects containing studentId, courseId, courseCode, courseSection
 }
@@ -78,8 +78,8 @@ async function getStudentsOfCourse(courseId) {
 async function getSectionsOfCourse(courseCode) {
     //Note that the course code received will not have spaces
     const fixedCourseCode = courseCode.slice(0,4) + " " + courseCode.slice(4); //re-add spaces
-    queryString = "SELECT * FROM `courses` WHERE `code` = ?";
-    [rows] = await pool.query(queryString, [fixedCourseCode]);
+    const queryString = "SELECT * FROM `courses` WHERE `code` = ?";
+    const [rows] = await pool.query(queryString, [fixedCourseCode]);
     const sectionsPromise = await rows.map( async(value, index, array) => {
         return value.section;
     })
@@ -89,9 +89,9 @@ async function getSectionsOfCourse(courseCode) {
 
 }
 
-async function createCourse(code, section, title, instructorId) {
-    queryString = "INSERT INTO `courses` (`courseId`, `title`, `code`, `section`, `visibility`) VALUES (0, ?, ?, ?, ?);"
-    await pool.query(queryString, [title, code, section, 1]);
+async function createCourse(code, section, title, instructorId, background) {
+    const queryString = "INSERT INTO `courses` (`courseId`, `title`, `code`, `section`, `visibility`, `background`) VALUES (0, ?, ?, ?, ?, ?);"
+    await pool.query(queryString, [title, code, section, 1, background]);
     
     //ASSOCIATE TO PROFESSOR THAT CREATED THE COURSE!!!!!
     const [addedCourse] = await getCourseFromCodeAndSection(code, section);
@@ -99,6 +99,31 @@ async function createCourse(code, section, title, instructorId) {
     instructorAddCourse(instructorId, courseId);
 
     
+}
+
+async function updateCourse(courseId, courseCode, courseSection, courseTitle, coursebg) {
+    if(courseCode != "null") {
+        const fixedCode = courseCode.slice(0,4) + "" + courseCode.slice(4);
+        const queryString = "UPDATE `courses` SET `code` = ? WHERE `courses`.`courseId` = ?";
+        await pool.query(queryString, [courseCode, courseId]);
+    }
+    if(courseSection != "null") {
+        const queryString = "UPDATE `courses` SET `section` = ? WHERE `courses`.`courseId` = ?";
+        await pool.query(queryString, [courseSection, courseId]);
+    }
+    if(courseTitle != "null") {
+        const queryString = "UPDATE `courses` SET `title` = ? WHERE `courses`.`courseId` = ?";
+        await pool.query(queryString, [courseTitle, courseId]);
+    }
+    if(coursebg != "null") {
+        const queryString = "UPDATE `courses` SET `background` = ? WHERE `courses`.`courseId` = ?";
+        await pool.query(queryString, [coursebg, courseId]);
+    }
+}
+
+async function deleteCourse(courseId) {
+    const queryString =  "DELETE FROM courses WHERE `courses`.`courseId` = ?";
+    await pool.query(queryString, [courseId]);
 }
 
 async function getCourseFromCodeAndSection(courseCode, courseSection) {
@@ -118,5 +143,7 @@ module.exports = {
     getCourseFromId,
     getSectionsOfCourse,
     createCourse, 
-    getCourseFromCodeAndSection
+    getCourseFromCodeAndSection,
+    updateCourse,
+    deleteCourse
 };

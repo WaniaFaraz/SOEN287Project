@@ -70,24 +70,24 @@ a {
 }
 
 .edit-courses-icon-anchor:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .edit-or-delete-pop-up {
-    position : absolute;
-    left:100%;
-    top:0cm;
+    position: absolute;
+    left: 100%;
+    top: 0cm;
     margin-left: 0.1cm;
     backdrop-filter: none;
-    border:0px;
+    border: 0px;
     border-radius: 5px;
-    padding : 0cm;
+    padding: 0cm;
     background-color: var(--w-purple-grey);
-      overflow: hidden;
-      width:5cm;
-      box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-    0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 5cm;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .edit-container {
@@ -95,43 +95,45 @@ a {
 }
 
 .edit-or-delete-pop-up p {
-    padding-right:0.4cm;
+    padding-right: 0.4cm;
     padding-left: 0.2cm;
-    padding-top:0.4cm;
-    padding-bottom:0.4cm;
+    padding-top: 0.4cm;
+    padding-bottom: 0.4cm;
     border-bottom: solid var(--w-purple-grey) 1px;
 }
 
-.edit-or-delete-pop-up li ul button{
-        background-color: var(--w-purple-grey);
+.edit-or-delete-pop-up li ul button {
+    background-color: var(--w-purple-grey);
     padding-left: 0.3cm;
-    padding-right:0.3cm;
+    padding-right: 0.3cm;
     border: 0;
-    padding-top: 0.2cm;;
-    font-size: 12pt; 
-    width:100%;
-    margin:0;
-    padding-bottom:0.2cm;
+    padding-top: 0.2cm;
+    ;
+    font-size: 12pt;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 0.2cm;
     text-align: left;
 }
 
 .edit-or-delete-pop-up li ul {
-    margin:0;
+    margin: 0;
 }
 
 .edit-or-delete-pop-up li {
-    margin:0
+    margin: 0
 }
 
 .edit-or-delete-pop-up li ul button:focus {
-    outline:none;
-    
+    outline: none;
+
 }
 
 .edit-or-delete-pop-up li ul button:hover {
     background-color: rgb(195, 182, 218);
 
 }
+
 .instructor-id {
     font-size: 14pt;
     text-align: right;
@@ -165,7 +167,8 @@ a {
     vertical-align: center;
 }
 
-.add-course-modal, .edit-course-modal {
+.add-course-modal,
+.edit-course-modal {
     border: 0px;
     border-radius: 15px;
     height: 18cm;
@@ -176,19 +179,20 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     backdrop-filter: blur;
+    overflow: hidden;
 }
 
 .modal-top-line img {
-    height : 0.4cm;
-    width : 0.4cm;
-   
+    height: 0.4cm;
+    width: 0.4cm;
+
 }
 
 .modal-close-button {
     border: 0;
     background-color: white;
-     position: fixed;
-    right : 1cm;
+    position: fixed;
+    right: 1cm;
     top: 1cm;
 }
 
@@ -214,7 +218,7 @@ a {
 .modal-row {
     margin-left: 1.2cm;
     padding: 0;
-    margin-right : 1.2cm;
+    margin-right: 1.2cm;
     margin-bottom: 1cm;
 }
 
@@ -225,24 +229,25 @@ a {
 }
 
 #ask-code {
-    width : 100%;
+    width: 100%;
 }
 
 #ask-section {
-    width : 0.7in;
+    width: 0.7in;
 }
 
 .ask-code {
-    width : 100%;
+    width: 100%;
 }
 
 .modal-row-2 {
-    display : flex;
-    gap : 0.7cm;
+    display: flex;
+    gap: 0.7cm;
 }
 
-.modal-row-2 label, .modal-row-2 .modal-input {
-    display:block;
+.modal-row-2 label,
+.modal-row-2 .modal-input {
+    display: block;
 }
 
 .modal-form-label {
@@ -251,6 +256,15 @@ a {
     margin-right: 0.3cm;
     margin-bottom: 0.2cm;
     font-size: 12pt;
+}
+
+.bg-modal-form-label {
+    color: #111;
+    display: inline-block;
+    margin-right: 0.3cm;
+    margin-bottom: 0.2cm;
+    font-size: 12pt;
+    margin-left: 1.2cm;
 }
 
 .modal-input {
@@ -264,50 +278,61 @@ a {
 .modal-input:focus {
     outline: none;
 }
+
 .modal-select-background {
-    margin-left:1.2cm;
+    margin-left: 1.2cm;
     margin-right: 1.2cm;
+    height: 7.1cm;
+    overflow-y: scroll;
+    scrollbar-color: var(--w-purple-grey) whitesmoke;
 }
 
-.modal-select-background input {
-    display:none;
+.modal-select-background .modal-radio {
+    display: none;
 }
 
-.modal-radio:checked + label > .bg-img-option {
-    border : solid 2px var(--z-dark-purple); 
+.modal-radio:checked+label>.bg-img-option {
+    border: solid 2px var(--z-dark-purple);
+}
+
+.edit-radio-none {
+    width:100%;
+    margin-left:0.2cm;
 }
 
 .bg-img-option {
-    height : 3cm;
-    width : 3cm;
+    height: 3cm;
+    width: 3cm;
     margin-right: 0.3cm;
     margin-bottom: 0.3cm;
-    padding:0.1cm;
-    border : solid 2px whitesmoke; 
+    padding: 0.1cm;
+    border: solid 2px whitesmoke;
 }
 
-.modal-add-button, .modal-edit-button {
-    height : 1cm;
-    width : 2cm;
+.modal-add-button,
+.modal-edit-button {
+    height: 1cm;
+    width: 2cm;
     font-size: 12pt;
     background-color: var(--w-purple-grey);
     border: 0px;
     border-radius: 5px;
     position: fixed;
-    right:1.2cm;
-    bottom: 1cm;;
+    right: 1.2cm;
+    bottom: 1cm;
+    ;
 }
 
 .modal-delete-button {
-    color : red;
-    height : 1cm;
-    width : 2cm;
+    color: red;
+    height: 1cm;
+    width: 2cm;
     font-size: 12pt;
     background-color: var(--w-purple-grey);
     border: 0px;
     border-radius: 5px;
     position: fixed;
-    right:10.6cm;
+    right: 10.6cm;
     bottom: 1cm;
 }
 
@@ -317,7 +342,7 @@ a {
     margin-right: 0.2cm;
     padding: 1.2cm 12%;
     border-radius: 15px;
-    
+
 
 }
 
@@ -436,6 +461,7 @@ a {
 .course-section {
     font-size: 12pt;
 }
+
 /**
 .edit-course-modal{
     height:1cm;

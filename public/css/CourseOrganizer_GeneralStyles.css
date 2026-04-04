@@ -26,6 +26,8 @@
     --radius: 15px;
     --shadow: 5px 5px 10px 0px va(--w-purple-grey);
     --pill: 50px;
+
+    
 }
 
 a {
@@ -418,88 +420,32 @@ button {
 
 /*course background*/
 .course-img-1 {
-    background-image: url('/course-images/IMG-20260215-WA0005.jpg');
-}
-
-.course-img-2 {
-    background-image : url('/course-images/IMG-20260215-WA0006.jpg');
-}
-
-.course-img-3 {
-    background-image: url('/course-images/IMG-20260215-WA0007.jpg');
-}
-
-.course-img-4 {
-    background-image: url('/course-images/IMG-20260215-WA0008.jpg');
-}
-
-.course-img-5 {
     background-image: url('/course-images/IMG-20260215-WA0009.jpg');
 }
 
-.course-img-6 {
-    background-image: url('/course-images/IMG-20260215-WA0010.jpg');
+.course-img-2 {
+    background-image : url('/course-images/IMG-20260215-WA0005.jpg')
 }
 
-.course-img-7 {
-    background-image: url('/course-images/IMG-20260215-WA0011.jpg');
-}
-
-.course-img-8 {
-    background-image: url('/course-images/IMG-20260215-WA0012.jpg');
-}
-
-.course-img-9 {
-    background-image: url('/course-images/IMG-20260215-WA0013.jpg');
-}
-
-.course-img-10 {
-    background-image: url('/course-images/IMG-20260215-WA0014.jpg');
-}
-
-.course-img-11 {
-    background-image: url('/course-images/IMG-20260215-WA0015.jpg');
-}
-
-.course-img-12 {
-    background-image: url('/course-images/IMG-20260215-WA0016.jpg');
-}
-
-.course-img-13 {
-    background-image: url('/course-images/IMG-20260215-WA0017.jpg');
-}
-
-.course-img-14 {
-    background-image: url('/course-images/IMG-20260215-WA0018.jpg');
-}
-
-.course-img-15 {
-    background-image: url('/course-images/IMG-20260215-WA0019.jpg');
-}
-
-.course-img-16 {
+.course-img-3 {
     background-image: url('/course-images/IMG-20260215-WA0020.jpg');
 }
 
-.course-img-17 {
-    background-image: url('/course-images/IMG-20260215-WA0021.jpg');
+.course-img-4 {
+    background-image: url('/course-images/IMG-20260215-WA0006.jpg');
 }
 
-.course-img-18 {
-    background-image: url('/course-images/IMG-20260215-WA0022.jpg');
+.course-img-5 {
+    background-image: url('/course-images/IMG-20260215-WA0011.jpg');
 }
 
-.course-img-19 {
-    background-image: url('/course-images/IMG-20260215-WA0023.jpg');
+.course-img-6 {
+    background-image:  url('/course-images/IMG-20260215-WA0013.jpg');
 }
-
-.course-img-20 {
-    background-image: url('/course-images/IMG-20260215-WA0024.jpg');
+.course-img-7 {
+    background-image:  url('/course-images/IMG-20260215-WA0023.jpg');
+}.course-img-8 {
+    background-image:  url('/course-images/IMG-20260215-WA0024.jpg');
+}.course-img-9 {
+    background-image:  url('/course-images/IMG-20260215-WA0018.jpg');
 }
-
-.course-img-21 {
-    background-image: url('/course-images/IMG-20260215-WA0025.jpg');
-}
-
-
-

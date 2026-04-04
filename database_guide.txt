@@ -54,7 +54,7 @@ DESCRIPTION OF EACH TABLE:
     (3) courses:
     -------------------------------------------------
         description : list of all courses
-        contains - courseId, title, code, section, visibility
+        contains - courseId, title, code, section, visibility, background
         constraints : the courseId is unique - AUTO-GENERATED, so no need to add
                       the combination of code and section is unique, i.e. the same course code cannot have the same section twice
     

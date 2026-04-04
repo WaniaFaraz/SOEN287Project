@@ -35,17 +35,18 @@ async function loadHomePage() {
         const title = course.title;
         const code = course.code;
         const section = course.section;
-        await addCourseToHomePage(code, title, section, courseId);
+        const background = course.background;
+        await addCourseToHomePage(code, title, section, courseId, background);
     })
 )}
     
 
 
 //funtion to add course to home page
-async function addCourseToHomePage(code, title, section, courseId) {
+async function addCourseToHomePage(code, title, section, courseId, background) {
     const courseArea = document.getElementById("course-area");
     courseArea.innerHTML += `<div class="course">
-                                <div class="course-image course-img-1"></div>
+                                <div class="course-image course-img-${background}"></div>
                                 <div class="course-info-text-area" >
                                     <p class="course-code">${code}<button type="button" class="edit-course-3-dots"></button></p>
                                     <a class ="course-info-text-a" href="course-page?courseId=${courseId}">
@@ -61,48 +62,54 @@ async function addCourseToHomePage(code, title, section, courseId) {
                                     </label>
                                 </div>
                             </div>`
+    
 }
 
 
 //MODAL FOR ADDING COURSES:
 const addCoursesModalButton = document.getElementById("add-courses-modal-button");
-
+const addCoursesModal = document.getElementById('add-course-modal');
 addCoursesModalButton.addEventListener('click', function() {
-    const modal = document.getElementById('add-course-modal');
-    modal.showModal();
+    addCoursesModal.showModal();
 })
 
 //CLOSE THE MODAL
-const closeModalButton = document.getElementById("close-modal");
+const closeModalButton = document.getElementById("add-courses-close-modal");
 closeModalButton.addEventListener('click', function() {
-    const modal = document.getElementById('add-course-modal');
-    modal.close();
+    addCoursesModal.close();
 })
 
 
-//WHEN THE USER IS ENTERING A COURSE CODE - CHECK WHICH SECTIONS EXIST FOR THIS COURSE CODE - CREATE ARRAY OF SECTIONS
-const courseCodeInput = document.getElementById("ask-code");
-courseCodeInput.addEventListener('keyup', async function() {
-    if(courseCodeInput.value.length == 8) { //a valid course code should have 8 characters: 'AAAA 111'
+//WHEN THE USER IS ENTERING A COURSE CODE - CHECK WHICH SECTIONS EXIST FOR THIS COURSE CODE - CREATE ARRAY OF SECTIONS FOR ADD COURSE MODAL
+const courseCodeInputAdd = document.getElementById("add-courses-ask-code");
+courseCodeInputAdd.addEventListener('keyup', async function() {
+    if(courseCodeInputAdd.value.length == 8) { //a valid course code should have 8 characters: 'AAAA 111'
         //fetch the route to get course sections from ids
         //remove spaces from the course code - to avoid errors
-        const courseCode = courseCodeInput.value.slice(0,4) + courseCodeInput.value.slice(5);
+        console.log(courseCodeInputAdd);
+        const courseCode = courseCodeInputAdd.value.slice(0,4) + courseCodeInputAdd.value.slice(5);
         const response = await fetch(`/api/instructor/get-sections-from-course-code/${courseCode}`);
         const sections = await response.json(); //already available sections for the course code entered
-        const element = document.getElementById("course-select-section");
-        generateSectionsDropDown(sections, element);
+        const element = document.getElementById("add-courses-select-section");
+        generateSectionsDropDown(sections, element, "add");
     }
 })
 //GENERATE THE SECTION DROPDOWN
-async function generateSectionsDropDown(sections, element) {
+async function generateSectionsDropDown(sections, element, modalType) {
     //sections is an array of sections
     //element is the html element where the dropdown needs to be inserted
     //Remove the sections that are already taken for this course code
     let allowedSections = [];
-    element.innerHTML = "";
-    if(sections.length == 0) { //invalid course, i.e. has no sections
-        element.innerHTML += `<option >Invalid</option>`;
+    if(modalType == "add") {
+        element.innerHTML = "";
     }
+    else if(modalType == "edit") {
+        element.innerHTML = "<option value='null'>No change</option>";
+    }
+    
+    if(sections.length != 0) { 
+        
+    
     const defaultAllSections = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     console.log("defaultAllSections:", defaultAllSections);
     //FILTER ALLOWED SECTIONS
@@ -114,12 +121,14 @@ async function generateSectionsDropDown(sections, element) {
         element.innerHTML += `<option value=${value}>${value}</option>`;
     })
 }
+}
 
 //EDIT COURSES MODAL
 const editCoursesAnchor = document.getElementById("edit-courses-icon-anchor");
 const EditOrDeletePopUp = document.getElementById("edit-or-delete-pop-up");
 const editCourseModal = document.getElementById("edit-course-modal");
 const editModalClose = document.getElementById("close-edit-modal");
+
 editCoursesAnchor.addEventListener("click", async ()=> {
     await createEditCourseList();
     EditOrDeletePopUp.show();
@@ -158,12 +167,31 @@ async function createEditCourseList() {
                 const courseCodeToEdit = event.target.innerHTML;
                 const editModalTitle = document.getElementById("edit-modal-title");
                 editModalTitle.innerHTML = `EDIT COURSE : ${courseCodeToEdit}`;
-                
+                const editButton = document.getElementById("edit-modal-edit-button");
+                editButton.setAttribute("formaction", `/api/instructor/edit-course/${courseIdToEdit}`);
+                const deleteButton = document.getElementById("edit-modal-delete-button");
+                deleteButton.setAttribute("formaction", `/api/instructor/delete-course/${courseIdToEdit}`);
                 editCourseModal.showModal();
 
             })
         });
 }
+
+//WHEN THE USER IS ENTERING A COURSE CODE - CHECK WHICH SECTIONS EXIST FOR THIS COURSE CODE - CREATE ARRAY OF SECTIONS
+const courseCodeInputEdit = document.getElementById("edit-ask-code");
+
+courseCodeInputEdit.addEventListener('keyup', async function() {
+    if(courseCodeInputEdit.value.length == 8) { //a valid course code should have 8 characters: 'AAAA 111'
+        //fetch the route to get course sections from ids
+        //remove spaces from the course code - to avoid errors
+        console.log(courseCodeInputEdit);
+        const courseCode = courseCodeInputEdit.value.slice(0,4) + courseCodeInputEdit.value.slice(5);
+        const response = await fetch(`/api/instructor/get-sections-from-course-code/${courseCode}`);
+        const sections = await response.json(); //already available sections for the course code entered
+        const element = document.getElementById("edit-select-section");
+        generateSectionsDropDown(sections, element, "edit");
+    }
+})
 
 
 

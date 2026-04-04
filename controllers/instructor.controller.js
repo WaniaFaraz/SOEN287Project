@@ -27,7 +27,9 @@ const {
     getAllCourses,
     getSectionsOfCourse,
     createCourse,
-    getCourseFromId
+    getCourseFromId,
+    updateCourse,
+    deleteCourse
 } = require("../database/courses.database");
 
 const {
@@ -54,10 +56,7 @@ router.get('/get-instructors/:id', async (request, response) => {
     response.json(instructor);
 })
 
-//ADD AN INSTRUCTOR - USE MULTER
-//add code here for adding instructors after collecting the account info
-//note: there is an addInstructor(id, firstName, lastName, emailAddress) function
-//      in the database file that will add the student to the database that can be used
+
 
 //GET COURSES OF A SPECIFIC INSTRUCTOR
 router.get('/get-courses/:instructorid', async (request, response) => {
@@ -110,12 +109,36 @@ router.post('/add-course', async (request, response) => {
     const courseCode = request.body.code;
     const courseSection = request.body.section;
     const courseTitle = request.body.title;
-    const coursebg = request.body.bg;
+    const coursebg = request.body.radioCourseBg;
     const instructorId = request.session.userId;
     console.log("instructorid:",instructorId);
-    await createCourse(courseCode, courseSection, courseTitle, instructorId);
+    await createCourse(courseCode, courseSection, courseTitle, instructorId, coursebg);
     response.redirect("/instructor/home");
 
+})
+
+//INSTRUCTOR EDIT COURSE 
+router.post('/edit-course/:courseId', async (request, response) => {
+    const courseId = request.params.courseId;
+    const courseCode = request.body.code;
+    const courseSection = request.body.section;
+    const courseTitle = request.body.title;
+    const coursebg = request.body.radioCourseBg;
+    await updateCourse(courseId, courseCode, courseSection, courseTitle, coursebg);
+    response.redirect("/instructor/home");
+})
+
+//INSTRUCTOR DELETE COURSE
+router.post('/delete-course/:courseId', async (request, response) => {
+    const courseId = request.params.courseId;
+    await deleteCourse(courseId);
+    response.redirect("/instructor/home");
+})
+//GET COURSE BY ID
+router.get('/get-course/:courseId', async (request, response) => {
+    const courseId = request.params.courseId;
+    const course = await getCourseFromId(courseId);
+    response.json(course);
 })
 
 //GET THE SECTIONS OF A COURSE BASED ON COURSE CODE
