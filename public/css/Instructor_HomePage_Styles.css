@@ -25,6 +25,35 @@
     --w-purple-grey: rgb(225, 222, 230);
 }
 
+.all-classes-option {
+    display: block;
+    background: none;
+    padding-left:65px;
+    text-align:left;
+    border:0px;
+    padding-bottom:0.3cm;
+    margin-top:0;
+    padding-top:0.3cm;
+    height : 0.6cm;
+    color: white;
+    font-size: 14pt;
+    width:100%;
+}
+
+.all-classes-option:focus {
+    outline:none;
+}
+
+.all-classes-option:hover {
+    background-color: var(--w-dark-purple1);
+    border-right: solid var(--w-magenta) 5px;
+}
+
+
+
+
+
+
 body {
     display: flex;
     overflow: auto;

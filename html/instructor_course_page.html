@@ -65,7 +65,7 @@
         <div class="sub-main">
             <div class="sub-main-left">
                 <div class="container">
-                    <div class="dashboard-card-container">
+                    <div class="dashboard-card-container add-assessment-table-container">
                         <p class="card-title">ASSESSMENTS</p>
 
                         <div class="dashboard-card assessments-card">
@@ -73,14 +73,16 @@
                                 <thead>
                                     <tr>
                                         <th>NAME</th>
-                                        <th>CATEGORY</th>
+                                        <th>DESCRIPTION</th>
                                         <th>DUE DATE</th>
                                         <th>WEIGHT</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                     <div class="dashboard-card-container">
@@ -269,10 +271,11 @@
             <select id="edit-select-assignment">
                 <option value="">Select an assignment...</option>
             </select>
-            <input type="text" id="edit-title" placeholder="Title">
-            <input type="text" id="edit-description" placeholder="Description">
-            <input type="number" id="edit-weight" placeholder="Weight (%)">
-            <input type="date" id="edit-duedate">
+            <div class = "edit-assessment-modal-row"><label for = "edit-title">Title: </label><input type="text" id="edit-title" placeholder="Title"></div>
+            <div class = "edit-assessment-modal-row"><label for = "edit-description">Description: </label><input type="text" id="edit-description" placeholder="Description"></div>
+            <div class = "edit-assessment-modal-row"><label for = "edit-weight">Weight: </label><input type="number" id="edit-weight" placeholder="Weight (%)"></div>
+            <div class = "edit-assessment-modal-row"><label for = "edit-duedate">Due Date:</label><input type="date" id="edit-duedate"></div>
+            
             <div class="modal-actions">
                 <button id="save-edit-btn">Save</button>
                 <button id="close-edit-modal-btn">Cancel</button>
@@ -283,10 +286,11 @@
     <dialog id="create-assignment-modal">
         <div class="modal-content">
             <h3>Create Assignment</h3>
-            <input type="text" id="create-title" placeholder="Title">
-            <input type="text" id="create-description" placeholder="Description">
-            <input type="number" id="create-weight" placeholder="Weight (%)">
-            <input type="date" id="create-duedate">
+            <div class = "create-assignment-modal-row"><label for="create-title">Title: </label><input type="text" id="create-title" placeholder="Title"></div>
+            <div class = "create-assignment-modal-row"><label for = "create-description">Description: </label><input type="text" id="create-description" placeholder="Description"></div>
+            <div class = "create-assignment-modal-row"><label for = "create-weight">Weight: </label><input type="number" id="create-weight" placeholder="Weight (%)"></div>
+            <div class = "create-assignment-modal-row"><label for = "create-duedate"> Date: </label><input type="date" id="create-duedate"></div>
+            
             <div class="modal-actions">
                 <button id="save-create-btn">Create</button>
                 <button id="close-create-modal-btn">Cancel</button>
@@ -295,4 +299,4 @@
     </dialog>
 </body>
 
-</html>
+</html

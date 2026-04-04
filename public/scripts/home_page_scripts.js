@@ -48,10 +48,15 @@ async function loadCourses() {
 
 //right now the function contains index - change to course backgroung image number
 async function createCourse(code, section, title, index, courseId) {
-    const courseArea = await document.getElementById("course-area");
+    const courseArea =  document.getElementById("course-area");
     courseArea.innerHTML += `<div class="course">
+<<<<<<< Updated upstream
                                 <div class="course-image course-img-${index + 1}"></div>
                                 <a class="course-info-text" href="course-page?courseId=${courseId}">
+=======
+                                <div class="course-image course-img-${index+1}"></div>
+                                <a class="course-info-text" href='course-page?courseId=${courseId}'>
+>>>>>>> Stashed changes
                                     <p class="course-code">${code}</p>
                                     <p class="course-name">${title}</p>
                                     <p class="course-section">Section ${section}</p>

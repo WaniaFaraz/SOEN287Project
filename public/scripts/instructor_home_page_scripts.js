@@ -81,6 +81,23 @@ async function addCourseToHomePage(code, title, section, courseId, background) {
 
 }
 
+//LEFT MENU CLASSES DROPDOWN --IN PROGRESS
+/**
+const allClassesMenuOption = document.getElementById("left-menu-all-classes");
+allClassesMenuOption.addEventListener("click", generateClassMenuDropDown);
+allClassesMenuOption.addEventListener
+async function generateClassMenuDropDown() {
+    const allClassesDropDown = document.getElementById("all-classes-menu-dropdown");
+    allClassesDropDown.innerHTML = "";
+    for( const course of instructorFinalCoursesArray) {
+        const code = course.code;
+        const section = course.section;
+        allClassesDropDown.innerHTML += `<a class = "all-classes-option">${code} - ${section}</a>`;
+    }
+}
+    */
+
+
 
 //MODAL FOR ADDING COURSES:
 const addCoursesModalButton = document.getElementById("add-courses-modal-button");

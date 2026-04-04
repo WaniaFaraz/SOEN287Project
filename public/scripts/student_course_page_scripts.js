@@ -27,11 +27,16 @@ async function getSession() {
     document.querySelector('.student-id').textContent = session.userId;
     loadAssignments();
     loadCourseName();
+<<<<<<< Updated upstream
 
+=======
+    loadCalendar();
+>>>>>>> Stashed changes
     // Set course structure link with courseId
     const structureBtn = document.querySelector('a[href="course-templates"]');
     if (structureBtn) structureBtn.href = `course-templates?courseId=${courseId}`;
 }
+
 
 // LOAD ASSIGNMENTS OF THE STUDENT FOR THIS COURSE
 async function loadAssignments() {
@@ -40,6 +45,18 @@ async function loadAssignments() {
     displayAssignments(assignments);
     loadEnterMarks(assignments);
     loadGradeBreakdown(assignments);
+}
+
+//LOAD THE CALENDAR ON THE RIGHT
+async function loadCalendar() {
+    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    const date = new Date();
+    const today = date.getDay();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const calDateToday = document.getElementById("cal-month-year")
+    calDateToday.innerHTML = months[month] + " " + year;
+    
 }
 
 // DISPLAY ASSIGNMENTS IN THE TABLE

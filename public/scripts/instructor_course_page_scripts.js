@@ -2,14 +2,14 @@
 
 let courseId;
 let instructorId;
+document.addEventListener('DOMContentLoaded', getSession); //do getSession when the document loads
 
 // GET SESSION INFO AND LOAD PAGE
 async function getSession() {
     const response = await fetch('/api/instructor/session');
     const session = await response.json();
-
     const params = new URLSearchParams(window.location.search);
-    courseId = params.get('courseId');
+    courseId =  params.get('courseId');
 
     if (!courseId) {
         console.log('No courseId in URL');
@@ -22,9 +22,9 @@ async function getSession() {
     }
 
     instructorId = session.userId;
-    loadAssignments();
-    loadCourseName();
-    loadCompletionStats();
+    await loadAssignments();
+    await loadCourseName();
+    await loadCompletionStats();
     // Set preview link with courseId
     document.querySelector('a[href="course-template-preview"]').href = `course-template-preview?courseId=${courseId}`;
     document.querySelector('a[href="course-templates"]').href = `course-templates?courseId=${courseId}`;
@@ -43,7 +43,7 @@ async function loadCourseName() {
     const response = await fetch(`/api/instructor/get-course-from-id/${courseId}`);
     const courses = await response.json();
     const course = courses[0]; // 
-    document.querySelector('.center-title').textContent = course.code;
+    document.querySelector('.center-title').textContent = course.code + " - " + course.section;
     document.querySelector('.current-course-count').textContent = course.title;
 }
 
@@ -70,6 +70,15 @@ function displayAssignments(assignments) {
         tbody.appendChild(row);
     });
 }
+
+//ADD ASSIGNMENT
+/*
+const addAssessmentButton = document.getElementById("add-assessment-button");
+addAssessmentButton.addEventListener("click", createAssessment);
+async function createAssessment() {
+    //const
+}
+    */
 // LOAD ASSESSMENT COMPLETION STATS
 async function loadCompletionStats() {
     const response = await fetch(`/api/instructor/get-completion-stats/${courseId}`);
@@ -99,6 +108,7 @@ function displayCompletionStats(stats) {
         `;
         container.appendChild(item);
     });
+}
 
     // EDIT ASSESSMENT MODAL
     document.getElementById('open-edit-modal').addEventListener('click', (e) => {
@@ -181,6 +191,7 @@ function displayCompletionStats(stats) {
         loadCompletionStats();
     });
 
+<<<<<<< Updated upstream
     // EDIT TEMPLATE - redirect to template page with courseId
     document.getElementById('open-edit-template').addEventListener('click', (e) => {
         e.preventDefault();
@@ -188,3 +199,5 @@ function displayCompletionStats(stats) {
     });
 }
 getSession();
+=======
+>>>>>>> Stashed changes
