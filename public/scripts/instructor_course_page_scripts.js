@@ -191,13 +191,9 @@ function displayCompletionStats(stats) {
         loadCompletionStats();
     });
 
-<<<<<<< Updated upstream
     // EDIT TEMPLATE - redirect to template page with courseId
     document.getElementById('open-edit-template').addEventListener('click', (e) => {
         e.preventDefault();
         window.location.href = `course-templates?courseId=${courseId}`;
     });
-}
-getSession();
-=======
->>>>>>> Stashed changes
+
