@@ -641,6 +641,10 @@ a {
     flex-shrink: 0;
 }
 
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(16px); 
+}
+
 .toggle-switch input {
     opacity: 0;
     width: 0;
