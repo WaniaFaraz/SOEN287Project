@@ -1,5 +1,5 @@
 body {
-    display:flex;
+    display: flex;
 }
 
 
@@ -149,9 +149,9 @@ a {
 }
 
 .announcements-area {
-    display : block;
+    display: block;
     padding-left: 0.5cm;
-    padding-right : 1cm;
+    padding-right: 1cm;
 
 }
 
@@ -171,117 +171,224 @@ a {
 }
 
 .announcements-of-one-course-card {
-    margin : 0.5cm 0cm;
+    margin: 0.5cm 0cm;
     background-color: var(--w-purple-grey);
     padding: 1cm 2cm 0.3cm 1cm;
-    display:block;
+    display: block;
     border-radius: 15px;
 
 }
 
 .announcement-card-course-title {
-    display:block;
-    width:100%;
+    display: block;
+    width: 100%;
     font-size: 16pt;
-    margin-bottom:0.3cm;
+    margin-bottom: 0.3cm;
 
 }
 
 .toggle-announcement-display {
-    display:none;
+    display: none;
 }
 
 label:has(.toggle-announcement-display:hover) {
     background-color: var(--w-purple-grey);
-    border-radius:50px;
-    padding:0.2cm;
+    border-radius: 50px;
+    padding: 0.2cm;
 }
 
 .toggle-announcement-display-container img {
-    height:18px;
-    width:18px;
+    height: 18px;
+    width: 18px;
 }
 
 .hide {
-    display:none;
+    display: none;
 }
 
 .announcement-card-course-title-row {
-    display:flex;
-    width:100%;
+    display: flex;
+    width: 100%;
 }
 
 .announcement-card-code-section {
     display: flex;
     flex-grow: 1;
-    
+
 }
 
 .announcement-course-title {
-    font-size : 14pt;
+    font-size: 14pt;
 }
 
 .announcement-button-div {
-    width : 2cm;
-    height : 1cm;
+    width: 2cm;
+    height: 1cm;
 }
 
 .announcement-button-div button {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     background-color: var(--w-yellow);
     border: 0px;
-    border-radius:15px;
+    border-radius: 15px;
 }
 
 .announcement-button-div button:hover {
     background-color: var(--w-dark-orange);
-    
+
 }
 
 .announcement-button-div button:focus {
-    outline:none;
+    outline: none;
 }
 
 .announcement-button-div button img {
-    height : 0.3cm;
-    width:0.3cm;
+    height: 0.3cm;
+    width: 0.3cm;
     margin-left: 0.2cm;
 }
 
 .announcement {
-    background-color : whitesmoke;
-    border-radius:15px;
-    padding:0.3cm;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    padding: 0.3cm;
     margin-bottom: 0.3cm;
 
 }
 
 .announcement-basic-info-row {
-    display:flex;
+    display: flex;
     margin-bottom: 0.5cm;
-    font-size:14pt;
+    font-size: 14pt;
 }
 
 .announcement-basic-info {
     display: flex;
-    flex-grow:1;
+    flex-grow: 1;
     color: var(--w-dark-purple1);
-    
+
 }
 
 
 .announcement-text-body {
     overflow-wrap: anywhere;
-    
+
 }
 
 #create-announcement-modal {
-    background-color: blue;
-    height:7cm;
-    width:5cm;
+    background-color: whitesmoke;
+    border: 0;
+    border-radius: 15px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 12cm;
+}
+
+.modal-top-line img {
+    height: 0.4cm;
+    width: 0.4cm;
+
+}
+
+.modal-close-button {
+    border: 0;
+    background-color: whitesmoke;
+    position: fixed;
+    right: 1cm;
+    top: 1cm;
+}
+
+.modal-close-button:focus {
+    outline: none;
+}
+
+
+.modal-title {
+    margin-left: 1cm;
+    margin-top: 1cm;
+    margin-bottom: 0.7cm;
+    font-size: 14pt;
+}
+
+.modal-row {
+    display: flex;
+}
+
+.modal-block {
+    display: block;
+}
+
+#create-announcement-modal-form {
+    margin: 0.3cm 1cm 3cm 1cm;
+}
+
+.modal-block label {
+    display: block;
+    margin-bottom: 0.2cm;
+}
+
+.modal-row {
+    margin-bottom: 0.4cm;
+    display: flex;
+    align-items: center;
+}
+
+.modal-row label {
+    margin-right: 0.3cm;
+}
+
+.modal-row select {
+    border: 0px;
+    border-radius: 5px;
+    height: 1cm;
+    display: flex;
+    flex-grow: 1;
+
+}
+
+.modal-row select:focus {
+    outline: var(--w-yellow) 2px solid;
+}
+
+.modal-block {
+    margin-bottom: 0.4cm;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 4cm;
+    border: 0px;
+    border-radius: 5px;
+    padding: 0.3cm;
+    font-size: 12pt;
+}
+
+.modal-block input {
+    height: 1cm;
+    font-size: 12pt;
+    padding-left: 0.3cm;
+    width: 100%;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.modal-block input:focus,
+textarea:focus {
+    outline: var(--w-yellow) 2px solid;
+}
+
+.create-announcement-submit-button {
+    height: 1cm;
+    width: 2cm;
+    font-size: 12pt;
+    background-color: var(--w-purple-grey);
+    border: 0px;
+    border-radius: 5px;
+    position: fixed;
+    right: 1.2cm;
+    bottom: 1cm;
 }

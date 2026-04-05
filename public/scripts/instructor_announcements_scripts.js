@@ -54,7 +54,7 @@ async function loadMainPage() {
 }
 
 async function createCourseAnnouncementCard(course, index) {
-    const announcementsArea = document.getElementById("announcements-area");
+    const announcementsArea = document.getElementById("announcements-sub-area");
     announcementsArea.innerHTML += `<div class="announcements-of-one-course-card">
                                         <div class="announcement-card-course-title">
                                             <div class="announcement-card-course-title-row">
@@ -74,9 +74,9 @@ async function loadCourseAnnouncements(courseId, courseNumber) {
     const response = await fetch(`/api/instructor/get-announcements-of-course/${courseId}`);
     const announcements = await response.json();
     const announcementsBody = document.getElementById(`announcement-body-${courseNumber}`);
-    console.log("announcements:",announcements);
+    console.log("announcements:", announcements);
 
-    if(announcements.length == 0) {
+    if (announcements.length == 0) {
         announcementsBody.innerHTML = `<div class="announcement">
                                             <div class="announcement-basic-info-row">
                                                 <div class="announcement-basic-info">No announcements</div>
@@ -102,37 +102,42 @@ async function loadCourseAnnouncements(courseId, courseNumber) {
                                             </div>`
         }
     }
-    
-    
+
+
 }
 
-const createAnnouncementButton = document.getElementsByClassName("create-announcement-button");
-createAnnouncementButton.addEventListener("click", createAnnouncement);
+const createAnnouncementButton = document.getElementById("create-announcement-button");
+
 const createAnnouncementModal = document.getElementById("create-announcement-modal");
-createAnnouncementModal.showModal();
+const createAnnouncementModalCloseButton = document.getElementById("close-create-announcement-modal");
 async function createAnnouncement() {
-    const createAnnouncementModal = document.getElementById("create-announcement-modal");
-    const courseDropDown = document.getElementById('courses-dropdown')
+    console.log("reached function");
+    const courseDropDown = document.getElementById('create-announcement-course-dropdown')
+
+    for (const course of instructorCoursesArray) {
+        const courseCodeSection = course.code + " - " + course.section;
+        courseDropDown.innerHTML += `<option value=${course.courseId}>${courseCodeSection}</option>`;
+    }
+
     createAnnouncementModal.showModal();
 }
+createAnnouncementButton.addEventListener("click", createAnnouncement);
+createAnnouncementModalCloseButton.addEventListener("click", async () => {
+    createAnnouncementModal.close();
+})
 
 
-document.addEventListener('change', async (event) => {
+document.addEventListener('change', (event) => {
     if (event.target.classList.contains('toggle-announcement-display')) {
-        if(event.target.checked) {
-            const announcement = await event.target.closest('.announcement');
-            const announcementBody = await announcement.querySelector(".announcement-text-body");
+        const announcement = event.target.closest('.announcement');
+        const announcementBody = announcement.querySelector(".announcement-text-body");
+        
+        if (event.target.checked) {
             event.target.previousElementSibling.setAttribute('src', "/black-icons/icons8-collapse-arrow-50.png");
             announcementBody.classList.remove("hide");
-            
-        }
-        else if(!event.target.checked) {
-            const announcement = await event.target.closest(".announcement");
-            const announcementBody = await announcement.querySelector(".announcement-text-body");
+        } else {
             announcementBody.classList.add("hide");
             event.target.previousElementSibling.setAttribute('src', "/black-icons/icons8-dropdown-50.png");
         }
-        
     }
 });
-

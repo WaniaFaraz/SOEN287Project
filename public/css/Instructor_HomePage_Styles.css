@@ -219,7 +219,7 @@ a {
 
 .modal-close-button {
     border: 0;
-    background-color: white;
+    background-color: whitesmoke;
     position: fixed;
     right: 1cm;
     top: 1cm;
@@ -349,7 +349,7 @@ a {
     position: fixed;
     right: 1.2cm;
     bottom: 1cm;
-    ;
+    
 }
 
 .modal-delete-button {

@@ -241,11 +241,12 @@ router.get('/get-announcement/:announcementId', async (request, response) => {
 //CREATE ANNOUNCEMENT
 
 router.post('/create-announcement', async (request, response) => {
-    const instructorId = request.body.instructorId;
+    const instructorId = request.session.userId;
     const courseId = request.body.courseId;
     const title = request.body.title;
     const message = request.body.message;
     await createAnnouncement(instructorId, courseId, title, message);
+    response.redirect("/instructor/announcements");
 
 })
 
