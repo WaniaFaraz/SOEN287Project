@@ -3,7 +3,7 @@ console.log('scripts loaded');
 document.addEventListener('DOMContentLoaded', getSession); //do getSession when the document loads
 let userId;
 
-let studentFinalCoursesArray; //array of student courses
+let studentCoursesArray; //array of student courses
 
 
 async function getSession() {
@@ -11,8 +11,8 @@ async function getSession() {
     const session = await response.json();
     userId = session.userId;
     // Display student info
-    document.getElementById('username').textContent = session.firstName;
-    document.querySelector('.student-id').textContent = session.userId;
+    document.getElementById('username').textContent = session.firstName + " " + session.lastName;
+    document.querySelector('.student-id').textContent = "ID: " + session.userId;
     await loadHomePage();
    
 }
@@ -25,8 +25,7 @@ async function loadHomePage() {
 
 async function loadCourses() {
     //GET ALL COURSES FOR STUDENT AND ADD THEM TO THE MAIN COURSE PAGE
-    //TO BE FIXED: ADD COURSE BACKGROUND - FIX DATABASE
-    studentFinalCoursesArray = [];
+    studentCoursesArray = [];
     const response = await fetch(`/api/student/get-courses/${userId}`);
     const coursesOfStudent = await response.json(); //array of student courses from `student_courses`
     //iterate over each course
@@ -40,7 +39,7 @@ async function loadCourses() {
         const section = course.section;
         const title = course.title;
         const coursebg = course.background;
-        studentFinalCoursesArray.push(course);
+        studentCoursesArray.push(course);
         //insert data into html elements
         await createCourse(code, section, title, coursebg, courseId);
     }))

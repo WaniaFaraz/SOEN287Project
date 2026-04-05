@@ -38,6 +38,10 @@ router.get("/course-page", (request, response) => {
 router.get("/assignments", (request, response) => {
     response.sendFile(dir + "/html/manage_assessments.html");
 })
+//ANNOUNCEMENTS FOR STUDENT
+router.get("/announcements", (request, response) => {
+    response.sendFile(dir + "/html/student_announcements.html");
+})
 //COURSE TEMPLATES FOR STUDENTS (MADE BY PROFESSORS)
 router.get("/course-templates", (request, response) => {
     response.sendFile(dir + "/html/student_templates.html");

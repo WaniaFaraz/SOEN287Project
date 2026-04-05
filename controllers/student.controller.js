@@ -45,6 +45,11 @@ const { getTemplateByCourse } = require("../database/templates.database");
 
 const { getTasksByStudent, addTask, updateTaskStatus, deleteTask } = require("../database/tasks.database");
 
+const {
+    getAnnouncementsOfCourse,
+    getAnnouncementFromId,
+} = require("../database/announcements.database");
+
 //ROUTES TO DEAL WITH DATA REQUESTS FROM SCRIPTS FILES - SEND AND RECEIVE DATA TO AND FROM HTML
 //GET ALL STUDENTS - RETURNS AN ARRAY OF STUDENT JSON OBJECTS
 router.get('/get-students', async (request, response) => {
@@ -96,6 +101,7 @@ router.post('/login', async (req, res) => {
     req.session.userId = students[0].studentId;
     req.session.userType = "student";
     req.session.firstName = students[0].firstName;
+    req.session.lastName = students[0].lastName;
     res.redirect(303, "/student/home");
 });
 
@@ -149,7 +155,7 @@ router.get('/get-grades/:studentid', async (req, res) => {
 //GET SESSION INFO
 router.get('/session', (req, res) => {
     if (req.session.userId && req.session.userType === "student")
-        res.json({ loggedIn: true, userId: req.session.userId, firstName: req.session.firstName });
+        res.json({ loggedIn: true, userId: req.session.userId, firstName: req.session.firstName, lastName: req.session.lastName });
     else
         res.json({ loggedIn: false });
 });
@@ -271,6 +277,20 @@ router.delete('/delete-task/:taskId', async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 });
+
+//ANNOUNCEMENTS FOR A COURSE
+router.get("/get-announcements-of-course/:courseId", async (request, response) => {
+    const courseId = request.params.courseId;
+    const announcements = await getAnnouncementsOfCourse(courseId);
+    response.json(announcements);
+})
+
+//GET ANNOUNCEMENT FROM ANNOUNCEMENT ID
+router.get('/get-announcement/:announcementId', async (request, response) => {
+    const announcementId = request.params.announcementId;
+    const announcement = await getAnnouncementFromId(announcementId);
+    response.json(announcement);
+})
 
 //Export the router object
 module.exports = router;
