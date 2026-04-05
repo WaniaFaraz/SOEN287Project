@@ -138,6 +138,11 @@ async function addCourseToStudent(studentId, courseSection, courseCode) {
     const [rows] = await pool.query(queryString, [studentId, courseCode, courseSection]);
 }
 
+async function updateVisibility(courseId, visibility) {
+    const queryString = "UPDATE `courses` SET `visibility` = ? WHERE `courses`.`courseId` = ?";
+    await pool.query(queryString, [visibility, courseId]);
+}
+
 //Export all functions
 module.exports = { 
     getAllCourses,
@@ -151,5 +156,6 @@ module.exports = {
     getCourseFromCodeAndSection,
     updateCourse,
     deleteCourse,
-    addCourseToStudent
+    addCourseToStudent,
+    updateVisibility
 };

@@ -29,7 +29,8 @@ const {
     createCourse,
     getCourseFromId,
     updateCourse,
-    deleteCourse
+    deleteCourse,
+    updateVisibility
 } = require("../database/courses.database");
 
 const {
@@ -139,6 +140,14 @@ router.post('/edit-course/:courseId', async (request, response) => {
     const courseTitle = request.body.title;
     const coursebg = request.body.radioCourseBg;
     await updateCourse(courseId, courseCode, courseSection, courseTitle, coursebg);
+    response.redirect("/instructor/home");
+})
+
+//UPDATE COURSE VISIBILITY
+router.post('/edit-course-visibility/:courseId', async (request, response) => {
+    const courseId = request.params.courseId;
+    const visibility = request.body.visibility;
+    await updateVisibility(courseId, visibility);
     response.redirect("/instructor/home");
 })
 

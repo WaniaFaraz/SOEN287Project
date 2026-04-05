@@ -43,7 +43,10 @@ async function loadCourses() {
         const coursebg = course.background;
         studentCoursesArray.push(course);
         //insert data into html elements
-        await createCourse(code, section, title, coursebg, courseId);
+        if(course.visibility) {
+            await createCourse(code, section, title, coursebg, courseId);
+        }
+        
     }))
 
 }

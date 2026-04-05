@@ -56,7 +56,8 @@ async function loadHomePage() {
         const code = course.code;
         const section = course.section;
         const background = course.background;
-        await addCourseToHomePage(code, title, section, courseId, background);
+        const visibility = course.visibility;
+        await addCourseToHomePage(code, title, section, courseId, background, visibility);
     })
     )
     loadAnnouncements();
@@ -81,7 +82,7 @@ async function loadStats() {
 
 
 //funtion to add course to home page
-async function addCourseToHomePage(code, title, section, courseId, background) {
+async function addCourseToHomePage(code, title, section, courseId, background, visibility) {
     const courseArea = document.getElementById("course-area");
     courseArea.innerHTML += `<div class="course">
                                 <div class="course-image course-img-${background}"></div>
@@ -95,13 +96,29 @@ async function addCourseToHomePage(code, title, section, courseId, background) {
                                 <div class="course-toggle-row">
                                     <span>Course visible to students</span>
                                     <label class="toggle-switch">
-                                        <input type="checkbox" checked />
+                                        <input type="checkbox" ${visibility?"checked":""} value="${courseId}" />
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
                             </div>`
 
 }
+
+//visibility toggle
+const coursesContainer = document.getElementById("course-area-container");
+coursesContainer.addEventListener("change", async (event) => {
+    if(event.target.type === 'checkbox' && event.target.closest('.course-toggle-row')) {
+        const isChecked = event.target.checked;
+        const courseId = event.target.value;
+        const response = await fetch(`/api/instructor/edit-course-visibility/${courseId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ courseId, visibility: isChecked })
+        });
+    }
+})
+
+
 
 //LEFT MENU CLASSES DROPDOWN --IN PROGRESS
 /**
