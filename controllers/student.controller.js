@@ -38,7 +38,9 @@ const {
 //ASSIGNMENT QUERY FUNCTIONS
 const {
      getAllAssignmentsOfStudent,
-     getAssignmentsOfStudentByCourse
+     getAssignmentsOfStudentByCourse,
+     getIncompleteAssignmentsOfStudent,
+     getAssignmentById
 } = require("../database/assignments.database");
 
 const { getTemplateByCourse } = require("../database/templates.database");
@@ -218,6 +220,20 @@ router.put('/update-grade', async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 });
+
+//GET INCOMPLETE ASSIGNMENTS
+router.get('/get-incomplete-assignments/:studentId', async (request, response) => {
+    const studentId = request.params.studentId;
+    const assignments = await getIncompleteAssignmentsOfStudent(studentId);
+    response.json(assignments);
+})
+
+//GET AN ASSIGNMENT BY ID
+router.get('/get-assignment-by-id/:assignmentId', async (request, response) => {
+    const assignmentId = request.params.assignmentId;
+    const assignment = await getAssignmentById(assignmentId);
+    response.json(assignment);
+})
 
 // GET COURSE TEMPLATE FOR STUDENT 
 router.get('/get-template/:courseId', async (req, res) => {

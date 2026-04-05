@@ -41,26 +41,65 @@ async function loadAssignments() {
     displayAssignments(assignments);
     loadEnterMarks(assignments);
     loadGradeBreakdown(assignments);
-    loadTasks(); 
+    loadTasks();
 }
 
 //LOAD THE CALENDAR ON THE RIGHT
 async function loadCalendar() {
+    let row;
     const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEP", "OCT", "NOV", "DEC"];
     const date = new Date();
     const today = date.getDay();
     const year = date.getFullYear();
     const month = date.getMonth();
-    const calMonthYear = document.getElementById("cal-month-year")
+    const calMonthYear = document.getElementById("cal-month-year");
     calMonthYear.innerHTML = months[month] + " " + year;
-    //April 4 2026  Saturday(6) --> 4/7 = 0 --> week 1 saturday --> 1-6 == 4
-    //Saturdays: 11, 18, 25, 32
-    //1,8,15,22,29 ... 7n+1 --> (num-1)/7 == 0 --> first day of the month
-    //row = week
-    //colum = day of the week
-    //find week#
-    const dayOfTheMonth = date.getDate();
-    
+
+    const firstDayDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    const firstDay = firstDayDate.getDay() - 1; //day of the week of the first day of the month
+    console.log("firstDay:", firstDay);
+
+    const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    console.log(daysInMonth);
+    //populate the first week:
+    let dayNumber = 1;
+    for (let col = firstDay; col <= 7; col++) {
+        console.log("dayNumber:", dayNumber);
+        let calDay = document.getElementById(`1-${col}`);
+        calDay.innerHTML = dayNumber;
+        calDay.classList.add("show");
+        dayNumber++;
+    }
+    //find the remaining number of weeks
+    const numWeeks = Math.floor(daysInMonth / 7);
+    console.log("numWeeks:", numWeeks);
+    for (let count = 1; count < numWeeks; count++) {
+        for (let col = 1; col <= 7; col++) {
+            row = 1+count;
+            console.log("dayNumber:", dayNumber);
+            console.log("row-col:",`${row}-${col}`);
+            let calDay = document.getElementById(`${row}-${col}`);
+            calDay.innerHTML = dayNumber;
+            calDay.classList.add("show");
+            dayNumber++;
+        }
+
+    }
+    //find the remaining number of days
+    const remainingDays = daysInMonth - dayNumber +1;
+    row++;
+    console.log("remaining days:", remainingDays);
+    for(let col = 1; col <= remainingDays; col++ ) {
+        console.log("dayNumber:", dayNumber);
+            console.log("row-col:",`${row}-${col}`);
+            let calDay = document.getElementById(`${row}-${col}`);
+            calDay.innerHTML = dayNumber;
+            calDay.classList.add("show");
+            dayNumber++;
+
+    }
+
+
 }
 
 // DISPLAY ASSIGNMENTS IN THE TABLE

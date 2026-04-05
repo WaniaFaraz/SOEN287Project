@@ -33,7 +33,10 @@ async function getSession() {
         document.querySelector('.instructor-id').textContent = userId;
     }
 
-    await loadHomePage();
+    loadHomePage();
+    loadCalendar();
+    
+    
 }
 //load the home page with the courses of the instructor
 async function loadHomePage() {
@@ -55,6 +58,7 @@ async function loadHomePage() {
         await addCourseToHomePage(code, title, section, courseId, background);
     })
     )
+    loadAnnouncements();
 }
 
 
@@ -226,6 +230,80 @@ courseCodeInputEdit.addEventListener('keyup', async function () {
         generateSectionsDropDown(sections, element, "edit");
     }
 })
+
+//LOAD THE CALENDAR ON THE RIGHT
+async function loadCalendar() {
+    let row;
+    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    const date = new Date();
+    const today = date.getDay();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const calMonthYear = document.getElementById("cal-month-year");
+    calMonthYear.innerHTML = months[month] + " " + year;
+
+    const firstDayDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    const firstDay = firstDayDate.getDay() - 1; //day of the week of the first day of the month
+
+    const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    //populate the first week:
+    let dayNumber = 1;
+    for (let col = firstDay; col <= 7; col++) {
+        let calDay = document.getElementById(`1-${col}`);
+        calDay.innerHTML = dayNumber;
+        calDay.classList.add("show");
+        dayNumber++;
+    }
+    //find the remaining number of weeks
+    const numWeeks = Math.floor(daysInMonth / 7);
+    console.log("numWeeks:", numWeeks);
+    for (let count = 1; count < numWeeks; count++) {
+        for (let col = 1; col <= 7; col++) {
+            row = 1+count;
+            let calDay = document.getElementById(`${row}-${col}`);
+            calDay.innerHTML = dayNumber;
+            calDay.classList.add("show");
+            dayNumber++;
+        }
+
+    }
+    //find the remaining number of days
+    const remainingDays = daysInMonth - dayNumber +1;
+    row++;
+    console.log("remaining days:", remainingDays);
+    for(let col = 1; col <= remainingDays; col++ ) {
+            console.log("row-col:",`${row}-${col}`);
+            let calDay = document.getElementById(`${row}-${col}`);
+            calDay.innerHTML = dayNumber;
+            calDay.classList.add("show");
+            dayNumber++;
+    }
+}
+
+async function loadAnnouncements() {
+    console.log("Reached load Announcemnets");
+    const announcementsList = document.getElementById("recent-announcements-list");
+    for(const course of instructorCoursesArray) {
+        const courseId = course.courseId;
+        const courseCode = course.code;
+        const courseSection = course.section;
+        const response = await fetch(`/api/instructor/get-announcements-of-course/${courseId}`);
+        const announcements = await response.json();
+        const shortenedAnnouncements = announcements.slice(-3);
+        for(const announcement of shortenedAnnouncements) {
+            const annTitle = announcement.title;
+
+
+            announcementsList.innerHTML += `<div class="recent-announcements-item"><a class="recent-announcements-item-anchor" href = "announcements" >
+            ${courseCode} - ${courseSection}: ${annTitle}
+            </a></div>`;
+        }
+
+    }
+    
+}
+
+
 
 
 
