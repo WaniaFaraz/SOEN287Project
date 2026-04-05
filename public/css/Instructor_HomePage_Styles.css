@@ -516,7 +516,7 @@ a {
 
 */
 
-.recent-activity-title {
+.recent-announcements-title {
     font-size: 18pt;
     margin-left: 0.5cm;
     margin-bottom: 0.5cm;
@@ -524,27 +524,27 @@ a {
 
 }
 
-.recent-activity-container {
+.recent-announcements-container {
     border-radius: 15px;
     background-color: rgb(225, 222, 230);
     margin: 0.2cm;
     padding: 0.2cm 12%;
 }
 
-.recent-activity-list {
+.recent-announcements-list {
     display: block;
     gap: 5%;
     margin-left: 0.5cm;
 }
 
-.recent-activity-item {
+.recent-announcements-item {
     border-radius: 20px;
     background-color: whitesmoke;
     padding: 0.3cm 0.7cm;
     margin-bottom: 0.4cm;
 }
 
-.recent-activity-item:has(.deadline-item-anchor:hover) {
+.recent-announcements-item:has(.deadline-item-anchor:hover) {
     background-color: var(--w-orange);
 }
 
