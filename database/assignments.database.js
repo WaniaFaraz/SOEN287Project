@@ -127,6 +127,16 @@ async function getIncompleteAssignmentsOfStudent(studentId) {
     return rows;
 }
 
+// Get average grade per course for all students 
+async function getAveragesByCourse(courseId) {
+    const [rows] = await pool.query(
+        `SELECT ROUND(AVG(grade), 2) AS average
+         FROM student_assignments
+         WHERE courseId = ?`,
+        [courseId]
+    );
+    return rows[0];
+}
 module.exports = {
     getAllAssignments,
     getAssignmentById,
@@ -140,5 +150,6 @@ module.exports = {
     getCompletionStatsByCourse,
     getAssignmentsOfStudentByCourse,
     getIncompleteAssignmentsOfStudent,
-    getPendingInstructorAssignments
+    getPendingInstructorAssignments,
+    getAveragesByCourse
 };

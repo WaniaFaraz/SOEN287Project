@@ -35,10 +35,9 @@ async function getSession() {
 
     loadHomePage();
     loadCalendar();
-    
-     
-    
+    loadClassPerformance(); 
 }
+
 //load the home page with the courses of the instructor
 async function loadHomePage() {
     instructorCoursesArray = [];
@@ -62,6 +61,46 @@ async function loadHomePage() {
     )
     loadAnnouncements();
     loadStats();
+}
+
+// LOAD CLASS PERFORMANCE FOR ALL COURSES 
+async function loadClassPerformance() {
+    const response = await fetch(`/api/instructor/get-courses/${userId}`);
+    const courses = await response.json();
+    
+    const container = document.querySelector('.classes-performance-bars-container');
+    if (!container) return;
+    container.innerHTML = '';
+    
+    let totalAvg = 0;
+    let count = 0;
+    
+    await Promise.all(courses.map(async (c) => {
+        const avgResponse = await fetch(`/api/instructor/get-course-average/${c.courseId}`);
+        const data = await avgResponse.json();
+        const avg = data.average || 0;
+        totalAvg += avg;
+        count++;
+        
+        const courseResponse = await fetch(`/api/instructor/get-course-from-id/${c.courseId}`);
+        const courseData = await courseResponse.json();
+        const course = courseData[0];
+        
+        container.innerHTML += `
+            <div class="courseRow">
+                <div class="courseLabel">
+                    <span>${course.code} - ${course.section}</span>
+                    <span>${avg}%</span>
+                </div>
+                <div class="barBackground">
+                    <div class="barFill" style="width: ${avg}%"></div>
+                </div>
+            </div>
+        `;
+    }));
+    
+    const overall = count > 0 ? Math.round(totalAvg / count) : 0;
+    document.getElementById('overall-percent').textContent = overall + '%';
 }
 
 //load stats

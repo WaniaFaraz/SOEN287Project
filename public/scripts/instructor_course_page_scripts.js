@@ -36,6 +36,7 @@ async function getSession() {
         document.getElementById('username').textContent = initials;
         document.querySelector('.instructor-id').textContent = instructorId;
     }
+    loadClassPerformance();
 }
 
 // LOAD COURSE NAME
@@ -52,6 +53,27 @@ async function loadAssignments() {
     const response = await fetch(`/api/instructor/get-assignments/${courseId}`);
     const assignments = await response.json();
     displayAssignments(assignments);
+}
+
+// LOAD CLASS PERFORMANCE FOR THIS COURSE
+async function loadClassPerformance() {
+    const response = await fetch(`/api/instructor/get-course-average/${courseId}`);
+    const data = await response.json();
+    const avg = data.average || 0;
+
+    const container = document.querySelector('.classes-performance-bars-container');
+    container.innerHTML = `
+        <div class="courseRow">
+            <div class="courseLabel">
+                <span>Course Average</span>
+                <span>${avg}%</span>
+            </div>
+            <div class="barBackground">
+                <div class="barFill" style="width: ${avg}%"></div>
+            </div>
+        </div>
+    `;
+    document.getElementById('overall-percent').textContent = avg + '%';
 }
 
 // DISPLAY ASSIGNMENTS IN THE TABLE

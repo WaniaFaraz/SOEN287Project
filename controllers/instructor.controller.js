@@ -274,5 +274,16 @@ router.post('/create-announcement', async (request, response) => {
 
 })
 
+// GET AVERAGE GRADE FOR A COURSE 
+router.get('/get-course-average/:courseId', async (req, res) => {
+    try {
+        const avg = await getAveragesByCourse(req.params.courseId);
+        res.json(avg);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
 
 module.exports = router;
