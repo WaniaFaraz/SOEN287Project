@@ -46,6 +46,7 @@ async function loadAssignments() {
 
 //LOAD THE CALENDAR ON THE RIGHT
 async function loadCalendar() {
+    console.log("calendar reached");
     let row;
     const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEP", "OCT", "NOV", "DEC"];
     const date = new Date();

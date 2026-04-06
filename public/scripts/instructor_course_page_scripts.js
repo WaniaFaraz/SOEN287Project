@@ -25,6 +25,7 @@ async function getSession() {
     await loadAssignments();
     await loadCourseName();
     await loadCompletionStats();
+    loadCalendar();
     // Set preview link with courseId
     document.querySelector('a[href="course-template-preview"]').href = `course-template-preview?courseId=${courseId}`;
     document.querySelector('a[href="course-templates"]').href = `course-templates?courseId=${courseId}`;
@@ -222,6 +223,7 @@ document.getElementById('open-edit-template').addEventListener('click', (e) => {
 //LOAD THE CALENDAR ON THE RIGHT
 async function loadCalendar() {
     let row;
+    console.log("calendar reached");
     const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEP", "OCT", "NOV", "DEC"];
     const date = new Date();
     const today = date.getDay();
